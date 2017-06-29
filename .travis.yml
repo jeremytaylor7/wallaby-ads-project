@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: sVl9vTdcIIlh+onoiwu37WMtypZ4oM93jXk7oaekQh7+UkYS/3UVPjTzZE8TXPm8F+td7AdQL7jlU/Bz00pUzOJmqPOIO8k/JInZlhKemh7AktETRFWUaPIhNuGEaCfu8T6AbIY6tdu3vSMIj5Lxr6fNVXGbCbyqtL1D2aHpJmnCv9NpQA71sRtN9CbA3GSyOW2o1D+Vt3XBxE9SfO8zEz+tCkPh6nSLWFJrG7YK0YFLhb3LzkwhwGD7LGTH48iPQpQLvxeePJaGL/9o+SAbQ2vLX/qeRJ9NIz6hhLodIgh1bgEvx1t7QR51TscF29AOWNWryod9MOF71ZGJ849dppW+Lpx0L8BT45N8n0tyZkGXYl/Jha/2Y529KdQaqGPiaGSbUJwk+zoc84v2df4ISIwyKarW6wlReyMQz5XYVK3qg6USiacXvC84frV6W7Cfq3Y0QEMPmRBZIx62qf7Nfi0Eeeg4Z2q548ww4zEqOTHgz4gdvVikgfHpT2HnpoOcwPuhFpb2gMYjN21q4PbO3lVTx3TnyF/dN0mNXxd+Vz4We5u8WG1D1x9Ug3n+V/hJpeRYG7o8WXQ9u6g32Ob4KFkvpGVnDdPu77D5WDMXwdHeP9bvXl+drfevKI9vOn3VnW0l8bFHfRwDkPEcNTDsFtfyJhzJA/cRP2DmTld9YYw=
+  app: sheltered-bastion-34291
+  on:
+    repo: jeremytaylor7/wallaby-ads-project
