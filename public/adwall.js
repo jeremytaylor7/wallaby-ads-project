@@ -11,6 +11,11 @@ const MOCK_ADS = {
             "link": "http://123beachcourse.com",
             "description": "5 part course teaches" +
             " how to get paid online fast!"
+        },
+        {
+            "title": "rags to riches",
+            "link": "http://ragstoriches.com",
+            "description": "learn the rags to riches secret!"
         }
 
     ]

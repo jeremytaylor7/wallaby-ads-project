@@ -14,6 +14,10 @@ app.use('/adwall', adwallRouter);
 app.use('/post', postRouter);
 app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
+
+app.post('/postsubmit', function (req, res) {
+    console.log('post was submitted');
+})
 console.log('listening on port 8080');
 
 module.exports = app;
