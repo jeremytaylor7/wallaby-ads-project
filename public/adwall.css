@@ -1,7 +1,12 @@
 .adsblock {
     background-color: green;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 body {
     background-color: beige;
 }
+

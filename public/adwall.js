@@ -21,9 +21,10 @@ function getAds(callback) {
 function displayAds(ads) {
     for (index in ads.fakeAds) {
         $('body').append(
-            '<div class="adsblock"><p>' + ads.title + '</p>' +
-            '<p>' + ads.link + '</p>' +
-            '<p>' + ads.description + '</p>' +
+            '<div class="adsblock"><p>' + ads.fakeAds[index].title + '</p>' +
+            '<a href=' + '"' + ads.fakeAds[index].link + '">' +
+            'Website link</a>' +
+            '<p>' + ads.fakeAds[index].description + '</p>' +
             '</div>');
     }
 }
