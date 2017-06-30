@@ -1,6 +1,11 @@
 
 # Wallaby Ads Ad Posting Application
 
+[![Build Status](https://travis-ci.org/jeremytaylor7/wallaby-ads-project.svg?branch=master)](https://travis-ci.org/jeremytaylor7/wallaby-ads-project)
+
+## Heroku URL
+[Heroku Project Link](https://sheltered-bastion-34291.herokuapp.com/)
+
 ## Function: 
 Ad posting platform designed exclusively for business owners
 online and offline. This allows business owners to post classified ads
@@ -66,3 +71,4 @@ If user upload an image with correct resoultion --> image success message
 ### View Ads I've posted: display ad elements on page
 
 ### view other ads: display ad elements
+
