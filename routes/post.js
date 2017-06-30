@@ -3,8 +3,7 @@ const router = express.Router();
 const app = express();
 
 router.get('/', function (req, res) {
-    res.sendFile('/Users/jeremy/projects/thinkful_capstone_2/public/post.html');
-
+    res.sendFile(path.resolve('./public/post.html'));
 })
 
 
