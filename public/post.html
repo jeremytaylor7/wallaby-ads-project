@@ -9,13 +9,13 @@
     <h1>Hey Post Your Ad!
     </h1>
     <div class="ad-form-container">
-        <form class="ad-form" action="localhost:8080/postsubmit" method="POST">
+        <form class="ad-form" action="/posts" method="POST">
             <label>Title:</label>
-            <input class="ad-title"></input>
+            <input type="text" class="ad-title" name="title"></input>
             <label>Website url:</label>
-            <input class="ad-url"></input>
+            <input type="text" class="ad-url" name="URL"></input>
             <label>Description</label>
-            <input class="ad-description"></input>
+            <input type="text" class="ad-description" name="Description"></input>
             <button type="submit">Post Ad</button>
         </form>
     </div>

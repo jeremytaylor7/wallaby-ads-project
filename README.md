@@ -23,7 +23,7 @@ Ads will allow users to include a title link picture and description.
 3. As a user I would like to post an ad with a title/picture/link/description
 4. As a user I would like to see how many ads I've posted.
 5. As a user I would like to view all ads I've posted.
-6. As a user I would like to view ads others have posted.
+6. ~~As a user I would like to view ads others have posted.~~
 7. As a user I would like to view how many times my ad was clicked.
 8. As a user I would like to rate ads based on quality
 9. As a user I would like to favorite and like ads.

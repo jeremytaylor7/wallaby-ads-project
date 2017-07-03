@@ -5,6 +5,8 @@ const adwallRouter = require('./routes/adwall');
 const postRouter = require('./routes/post');
 const dirRouter = require('./routes/directory');
 const myadsRouter = require('./routes/myads');
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 app.listen(process.env.PORT || 8080);
@@ -15,8 +17,11 @@ app.use('/post', postRouter);
 app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
 
-app.post('/postsubmit', function (req, res) {
+app.use(bodyParser.json());
+
+app.post('/posts', urlencodedParser, function (req, res) {
     console.log('post was submitted');
+    console.log(req.body);
 })
 console.log('listening on port 8080');
 
