@@ -1,3 +1,7 @@
+const state = {
+    adForm: false
+}
+
 const MOCK_ADS = {
 
     fakeAds: [
@@ -21,6 +25,27 @@ const MOCK_ADS = {
     ]
 }
 
+function checkAdForm() {
+    $('.createAd').on('click', function () {
+        if (state.adForm === false) {
+            state.adForm = true;
+            renderAdForm();
+            $('.createAd').hide()
+        }
+
+    })
+}
+
+function renderAdForm() {
+
+    $('.ad-form-container').show();
+    $('.cancel').on('click', function (event) {
+        event.preventDefault();
+        $('.ad-form-container').hide();
+        $('.createAd').show();
+    })
+}
+
 
 function displayAds(ads) {
     for (index in ads.fakeAds) {
@@ -42,5 +67,6 @@ function getAndDisplayAds() {
 
 $(function () {
     getAndDisplayAds();
+    checkAdForm();
 })
 

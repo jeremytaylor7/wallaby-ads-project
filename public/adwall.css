@@ -12,5 +12,16 @@ body {
     background-color: beige;
 }
 
+.createAd{
+    display: block;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.ad-form-container{
+    display: none;
+}
+
 
 
