@@ -13,16 +13,12 @@ app.listen(process.env.PORT || 8080);
 
 app.use('/dashboard', dashRouter);
 app.use('/adwall', adwallRouter);
-app.use('/post', postRouter);
+app.use('/posts', postRouter);
 app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
 
 app.use(bodyParser.json());
 
-app.post('/posts', urlencodedParser, function (req, res) {
-    console.log('post was submitted');
-    console.log(req.body);
-})
 console.log('listening on port 8080');
 
 module.exports = app;

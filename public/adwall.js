@@ -20,9 +20,8 @@ const MOCK_ADS = {
 
     ]
 }
-function getAds(callback) {
-    setTimeout(function () { callback(MOCK_ADS) });
-}
+
+
 function displayAds(ads) {
     for (index in ads.fakeAds) {
         $('body').append(
@@ -33,14 +32,13 @@ function displayAds(ads) {
             '</div>');
     }
 }
+function getAds(callback) {
+    callback(MOCK_ADS);
+}
 
 function getAndDisplayAds() {
     getAds(displayAds);
 }
-
-$('h1').on('click', function () {
-    alert('HEYYY');
-})
 
 $(function () {
     getAndDisplayAds();
