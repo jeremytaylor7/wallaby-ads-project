@@ -21,7 +21,23 @@ body {
 
 .ad-form-container{
     display: none;
+    border: 1px solid black;
+    height: 300px;
+    width: 500px;
+    margin-bottom: 20px;
 }
 
+.ad-title, .ad-url, .ad-description {
+    display: block;
+    margin-bottom: 10px;
+}
 
+.ad-title, .ad-url {
+    width: 250px;
+}
+
+.ad-description {
+    width: 250px;
+    height: 100px;
+}
 

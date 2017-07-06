@@ -43,6 +43,7 @@ function renderAdForm() {
         event.preventDefault();
         $('.ad-form-container').hide();
         $('.createAd').show();
+        state.adForm = false;
     })
 }
 
