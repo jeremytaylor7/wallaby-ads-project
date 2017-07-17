@@ -31,27 +31,26 @@ const MOCK_ADS = {
 // adds to mockdata and then saves
 //goal is to finish client and design by next session!
 
-function loadAds() {
-    localStorage.setItem("ads", JSON.stringify(MOCK_ADS.fakeAds[1]));
+
+function createAd(item) {
+    return new Promise((resolve, reject) => {
+        MOCK_ADS.fakeAds.push(item);
+        saveAds();
+        resolve();
+    })
 }
 
-function load() {
-    return localStorage.getItem("ads");
+function saveAds() {
+    localStorage.setItem('ads', JSON.stringify(MOCK_ADS));
+
 }
 
-function displayAds(ads) {
-    for (index in ads.fakeAds) {
-        $('.ad-block-container').append(
-            '<div class="adsblock"><p>' + ads.fakeAds[index].title + '</p>' +
-            '<a href=' + '"' + ads.fakeAds[index].link + '">' +
-            'Website link</a>' +
-            '<p>' + ads.fakeAds[index].description + '</p>' +
-            '</div>');
-    }
+function getLocalStorage() {
+    JSON.parse(localStorage.getItem('ads'));
 }
+
 function getAds(callback) {
-    let adItem = load();
-    let ads = JSON.parse(adItem);
+    let ads = getLocalStorage();
     callback(ads);
 }
 
@@ -63,7 +62,6 @@ function getAndDisplayAds() {
 
 
 $(function () {
-    loadAds();
-    getAndDisplayAds();
+    getAds();
 })
 

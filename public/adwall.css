@@ -10,14 +10,7 @@
     margin-top: 10px;
 
 }
-.inner-form-container {
-    padding-top: 20px;
-    height: 300px;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
+
 
 .ad-block-container {
     width: 1000px;
@@ -45,28 +38,11 @@ body {
 }
 
 .ad-form-container{
-    display: none; 
-    border: 1px solid black;
-    height: 300px;
-    width: 500px;
-    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.ad-title, .ad-url, .ad-description {
-    display: block;
-    margin-bottom: 10px;
-}
 
-.ad-title, .ad-url {
-    width: 250px;
-}
-
-.ad-description {
-    width: 250px;
-    height: 100px;
-}
 
 .nav {
     width: 100%;

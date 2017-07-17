@@ -14,7 +14,7 @@ router.get('/new', function (req, res) {
 
 
 router.post('/', urlencodedParser, function (req, res) {
-    createPost(req.body);
+    createAd(req.body);
     console.log('post was submitted');
     console.log(req.body);
 })
