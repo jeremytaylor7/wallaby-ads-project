@@ -6,7 +6,6 @@ const postRouter = require('./routes/post');
 const dirRouter = require('./routes/directory');
 const myadsRouter = require('./routes/myads');
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 app.listen(process.env.PORT || 8080);

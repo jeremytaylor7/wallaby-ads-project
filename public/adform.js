@@ -12,11 +12,11 @@
             </form> `
     window.renderAdForm = function (element, cancelClickHandler) {
 
-        $(HTML).find('.adForm--cancel').click(
+
+        element.html(HTML).find('.adForm--cancel').on('click',
             (e) => {
                 e.preventDefault();
                 cancelClickHandler(e);
             });
-        element.html(HTML)
     };
 })();

@@ -38,6 +38,7 @@ function displayAds(ads) {
 // }
 
 function render() {
+    $('.ad-form-container').empty();
     if (state.adForm === true) {
         renderAdForm($('.ad-form-container'), () => {
             state.adForm = false;
