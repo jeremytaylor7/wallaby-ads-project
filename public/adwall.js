@@ -1,4 +1,5 @@
 const state = {
+    ads: [],
     adForm: false
 }
 
@@ -16,15 +17,21 @@ don't store whole state, just whatever I need
 */
 
 
+const adsTemplate = (title, link, description) => {
+
+    return `<div class="adsblock"><p>${title}</p>
+    <a href=" ${link} ">
+    Visit Website</a>
+    <p>${description}</p>
+    <button class="edit-button">Edit Ad</button>
+    </div>`
+};
 function displayAds(ads) {
-    for (var i = 0; i <= Storage.length; i++) {
-        $('.ad-block-container').append(
-            '<div class="adsblock"><p>' + ads.title + '</p>' +
-            '<a href=' + '"' + ads.link + '">' +
-            'Website link</a>' +
-            '<p>' + ads.description + '</p>' +
-            '</div>');
-    }
+    const adsList = ads.map((item) => {
+        return adsTemplate(item.title, item.URL, item.description);
+    })
+    const adString = adsList.join('');
+    $('.ad-block-container').html(adString);
 }
 
 //  function renderAdForm() {
@@ -37,32 +44,32 @@ function displayAds(ads) {
 //     })
 // }
 
+function cancelAd() {
+    state.adForm = false;
+    render();
+}
+function postAd(item) {
+    state.ads.push(item);
+    state.adForm = false;
+    render();
+}
 function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
-        renderAdForm($('.ad-form-container'), () => {
-            state.adForm = false;
-            render();
-        })
+        renderAdForm($('.ad-form-container'), cancelAd, postAd);
         $('.createAd').hide()
     }
     else {
         $('.createAd').show();
     }
+    displayAds(state.ads);
 }
 
 function watchHandlers() {
-    $('.ad-form').on('submit', e => {
-        e.preventDefault();
-        const adItem = {
-            "title": e.target.title.value,
-            "URL": e.target.URL.value,
-            "description": e.target.Description.value
-        }
-        createAd(adItem).then(() => {
-            $('.ad-form').hide();
-        })
-    });
+    $('.edit-button').on('click', (e) => {
+        alert('It works!');
+    })
+
 }
 
 //post ad functions
@@ -71,6 +78,9 @@ function watchHandlers() {
 
 
 $(function () {
+    $('document.body').on('click', (e) => {
+        alert('hi!');
+    })
     render();
     watchHandlers();
     checkAdForm();

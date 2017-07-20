@@ -10,13 +10,31 @@
                 <button type="submit" class="adForm--submit">Post Ad</button>
                 <button class="adForm--cancel">Cancel</button>
             </form> `
-    window.renderAdForm = function (element, cancelClickHandler) {
+    window.renderAdForm = function (element, cancelClickHandler, postHandler) {
 
+        const component = element.html(HTML);
 
-        element.html(HTML).find('.adForm--cancel').on('click',
+        component.find('.adForm--cancel').on('click',
             (e) => {
                 e.preventDefault();
                 cancelClickHandler(e);
             });
+
+
+
+        component.find('form').on('submit', (e) => {
+
+            e.preventDefault();
+
+            const adItem = {
+                "title": e.target.title.value,
+                "URL": e.target.URL.value,
+                "description": e.target.Description.value
+            }
+            postHandler(adItem);
+
+        })
     };
+
+
 })();
