@@ -32,13 +32,13 @@ const MOCK_ADS = {
 //goal is to finish client and design by next session!
 
 
-// function createAd(item) {
-//     return new Promise((resolve, reject) => {
-//         MOCK_ADS.fakeAds.push(item);
-//         saveAds();
-//         resolve();
-//     })
-// }
+function createAd(item) {
+    return new Promise((resolve, reject) => {
+        MOCK_ADS.fakeAds.push(item);
+        saveAds();
+        resolve();
+    })
+}
 
 function saveAds() {
     localStorage.setItem('ads', JSON.stringify(MOCK_ADS));
@@ -54,14 +54,14 @@ function getLocalStorage() {
 //     callback(ads);
 // }
 
-function getAndDisplayAds() {
-    getAds(displayAds);
+function getAndDisplayAds(callback) {
+    return new Promise(res, rel) getAds(displayAds);
 }
 
 
 
 
-$(function () {
-    // getAds();
-})
-
+//add delete and update to this api
+//use api to get local storage add to state and render
+// all of my functions need to return promises in api
+// Promise.resolve documentation static promises

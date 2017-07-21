@@ -1,5 +1,5 @@
 .adsblock {
-    background-color: lemonchiffon;
+    background-color: #12F397;  
     /*width: 150px;*/
     /*height: 200px;*/
     display: inline-block;
@@ -27,7 +27,7 @@ h1 {
 }
 
 body {
-    background-color: beige;
+    background-color: white;
 }
 
 .createAd{
@@ -40,6 +40,7 @@ body {
 .ad-form-container{
     margin-left: auto;
     margin-right: auto;
+    width: 500px;
 }
 
 
@@ -48,7 +49,7 @@ body {
     width: 100%;
     border: 2px solid black;
     float: left;
-    background-color: lightcoral;
+    background-color: #12F397;
     margin-bottom: 10px;
     height: 50px;
     

@@ -23,6 +23,7 @@ const adsTemplate = (title, link, description) => {
     <a href=" ${link} ">
     Visit Website</a>
     <p>${description}</p>
+    <button class"delete-btn">Delete</button>
     <button class="edit-button">Edit Ad</button>
     </div>`
 };
@@ -32,6 +33,10 @@ function displayAds(ads) {
     })
     const adString = adsList.join('');
     $('.ad-block-container').html(adString);
+    $('.edit-button').on('click', e => {
+        state.adForm = true;
+        render();
+    });
 }
 
 //  function renderAdForm() {
@@ -66,7 +71,7 @@ function render() {
 }
 
 function watchHandlers() {
-    $('.edit-button').on('click', (e) => {
+    $('.edit-button').click((e) => {
         alert('It works!');
     })
 
@@ -78,9 +83,6 @@ function watchHandlers() {
 
 
 $(function () {
-    $('document.body').on('click', (e) => {
-        alert('hi!');
-    })
     render();
     watchHandlers();
     checkAdForm();

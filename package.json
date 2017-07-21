@@ -19,5 +19,8 @@
     "mongoose": "^4.11.1",
     "morgan": "^1.8.2",
     "quill": "^1.2.6"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
   }
 }

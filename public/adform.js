@@ -7,7 +7,7 @@
                 <input type="text" class="adForm--url" name="URL"></input>
                 <label>Description</label>
                 <input type="text" class="adForm--description" name="Description"></input>
-                <button type="submit" class="adForm--submit">Post Ad</button>
+                <button type="submit" class="adForm--submit">Save Ad</button>
                 <button class="adForm--cancel">Cancel</button>
             </form> `
     window.renderAdForm = function (element, cancelClickHandler, postHandler) {
