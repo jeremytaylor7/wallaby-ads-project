@@ -32,6 +32,7 @@
                 "description": e.target.Description.value
             }
             postHandler(adItem);
+            createAd(adItem).then(saveAds());
 
         })
     };
