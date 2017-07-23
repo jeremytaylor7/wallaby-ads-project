@@ -47,7 +47,6 @@ function saveAds() {
 
 function getLocalStorage(callback) {
     const adStorage = JSON.parse(localStorage.getItem('ads'));
-    console.log(adStorage);
     return Promise.resolve(adStorage);
 }
 
