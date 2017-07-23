@@ -40,23 +40,24 @@ function createAd(item, callback) {
 }
 
 function saveAds() {
-    localStorage.setItem('ads', JSON.stringify(MOCK_ADS));
+    localStorage.setItem('ads', JSON.stringify(MOCK_ADS.fakeAds));
     return Promise.resolve('success');
 
 }
 
 function getLocalStorage(callback) {
-
-    const ads = JSON.parse(localStorage.getItem('ads'));
-    return Promise.resolve(ads);
+    const adStorage = JSON.parse(localStorage.getItem('ads'));
+    console.log(adStorage);
+    return Promise.resolve(adStorage);
 }
 
 // function getAds(callback) {
-//     let ads = getLocalStorage();
 //     callback(ads);
-// }
+//     return getLocalStorage();
+// }/
 
 function getAndDisplayAds(callback) {
+    getAds(displayAds);
     return Promise.resolve('promise');
 }
 

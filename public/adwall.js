@@ -80,11 +80,18 @@ function watchHandlers() {
 //post ad functions
 
 
-
+function adToState(MOCK_ADS) {
+    state.ads.forEach(item => {
+        state.ads.push(item);
+    })
+    console.log(MOCK_ADS);
+}
 
 $(function () {
+    getLocalStorage().then(adToState);
     render();
     watchHandlers();
     checkAdForm();
+    saveAds();
 })
 

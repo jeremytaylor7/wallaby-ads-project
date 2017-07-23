@@ -34,6 +34,7 @@
             postHandler(adItem);
             createAd(adItem).then(saveAds());
 
+
         })
     };
 
