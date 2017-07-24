@@ -34,6 +34,7 @@ function displayAds(ads) {
     const adString = adsList.join('');
     $('.ad-block-container').html(adString);
     $('.edit-button').on('click', e => {
+        alert('it works!')
         state.adForm = true;
         render();
     });
@@ -57,6 +58,9 @@ function postAd(item) {
     state.ads.push(item);
     state.adForm = false;
     render();
+}
+function editAd(item) {
+    state.ads.forEach()
 }
 function render() {
     $('.ad-form-container').empty();

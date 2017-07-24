@@ -7,10 +7,11 @@
                 <input type="text" class="adForm--url" name="URL"></input>
                 <label>Description</label>
                 <input type="text" class="adForm--description" name="Description"></input>
-                <button type="submit" class="adForm--submit">Save Ad</button>
+                <button type="submit" class="adForm--submit">Post Ad</button>
+                <button type="submit" class="adForm--edit">Save Changes</button>
                 <button class="adForm--cancel">Cancel</button>
             </form> `
-    window.renderAdForm = function (element, cancelClickHandler, postHandler) {
+    window.renderAdForm = function (element, cancelClickHandler, postHandler, editHandler) {
 
         const component = element.html(HTML);
 
@@ -35,6 +36,15 @@
             createAd(adItem).then(saveAds());
 
 
+        })
+        component.find('.adForm--edit').on('click', (e) => {
+            e.preventDefault();
+            const adItem = {
+                "title": e.target.title.value,
+                "URL": e.target.URL.value,
+                "description": e.target.Description.value
+            }
+            editHandler(adItem);
         })
     };
 
