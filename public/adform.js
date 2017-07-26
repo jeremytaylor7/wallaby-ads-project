@@ -29,7 +29,7 @@
 
             const adItem = {
                 "title": e.target.title.value,
-                "URL": e.target.URL.value,
+                "link": e.target.URL.value,
                 "description": e.target.Description.value
             }
             postHandler(adItem);
@@ -39,12 +39,7 @@
         })
         component.find('.adForm--edit').on('click', (e) => {
             e.preventDefault();
-            const adItem = {
-                "title": e.target.title.value,
-                "URL": e.target.URL.value,
-                "description": e.target.Description.value
-            }
-            editHandler(adItem);
+            // editHandler();
         })
     };
 

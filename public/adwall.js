@@ -19,24 +19,41 @@ don't store whole state, just whatever I need
 
 const adsTemplate = (title, link, description) => {
 
-    return `<div class="adsblock"><p>${title}</p>
-    <a href=" ${link} ">
-    Visit Website</a>
-    <p>${description}</p>
+    return `<div class="adsblock">
+    <p class="title">${title}</p>
+    <a href="${link}" class="link">Visit Website</a>
+    <p class="description">${description}</p>
     <button class"delete-btn">Delete</button>
     <button class="edit-button">Edit Ad</button>
     </div>`
 };
 function displayAds(ads) {
     const adsList = ads.map((item) => {
-        return adsTemplate(item.title, item.URL, item.description);
+        return adsTemplate(item.title, item.link, item.description);
     })
     const adString = adsList.join('');
     $('.ad-block-container').html(adString);
     $('.edit-button').on('click', e => {
-        alert('it works!')
-        state.adForm = true;
-        render();
+        const title = $(event.target).parent().find('.title').text();
+        const link = $(event.target).parent().find('.link').attr('href');
+        const description = $(event.target).parent().find('.description').text();
+
+        const adItem = {
+            "description": description,
+            "link": link,
+            "title": title
+        }
+
+        state.ads.forEach(item => {
+
+            if (1 + 1 === 2) {
+                console.log(item);
+                alert('it really works!');
+            }
+        })
+        console.log(adItem);
+        console.log(state.ads);
+        const targetIndex = 0;
     });
 }
 
@@ -59,8 +76,11 @@ function postAd(item) {
     state.adForm = false;
     render();
 }
-function editAd(item) {
-    state.ads.forEach()
+function editAd(item, index) {
+    state.ads[index] = item;
+    state.adForm = false;
+    render();
+
 }
 function render() {
     $('.ad-form-container').empty();
@@ -93,6 +113,7 @@ function addToState(MOCK_ADS) {
 $(function () {
     getLocalStorage().then(addToState);
     render();
+    displayAds(state.ads);
     watchHandlers();
     checkAdForm();
 })

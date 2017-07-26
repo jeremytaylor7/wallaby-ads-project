@@ -50,6 +50,10 @@ function getLocalStorage(callback) {
     return Promise.resolve(adStorage);
 }
 
+function editLocalStorage(callback) {
+
+}
+
 // function getAds(callback) {
 //     callback(ads);
 //     return getLocalStorage();
