@@ -39,21 +39,22 @@ function displayAds(ads) {
         const description = $(event.target).parent().find('.description').text();
 
         const adItem = {
-            "description": description,
+            "title": title,
             "link": link,
-            "title": title
+            "description": description
         }
+        let targetIndex = 0;
 
-        state.ads.forEach(item => {
-
-            if (1 + 1 === 2) {
-                console.log(item);
-                alert('it really works!');
+        for (var i = 0; i < state.ads.length; i++) {
+            if (adItem.title === state.ads[i].title) {
+                targetIndex = i;
             }
-        })
-        console.log(adItem);
-        console.log(state.ads);
-        const targetIndex = 0;
+        }
+        state.adForm = true;
+        render();
+        $('.adForm--title').val(adItem.title);
+        $('.adForm--url').val(adItem.link);
+        $('.adForm--description').val(adItem.description);
     });
 }
 
