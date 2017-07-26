@@ -50,8 +50,15 @@ function getLocalStorage(callback) {
     return Promise.resolve(adStorage);
 }
 
-function editLocalStorage(callback) {
-
+function editLocalStorage(item) {
+    const parsedAds = JSON.parse(localStorage.getItem('ads'));
+    for (var i = 0; i <= parsedAds.length; i++) {
+        if (item === parsedAds[i]) {
+            item = parsedAds[i];
+        }
+    }
+    console.log(parsedAds);
+    localStorage.setItem('ads', JSON.stringify(parsedAds));
 }
 
 // function getAds(callback) {

@@ -1,6 +1,7 @@
 const state = {
     ads: [],
-    adForm: false
+    adForm: false,
+    index: 0
 }
 
 function checkAdForm() {
@@ -43,11 +44,9 @@ function displayAds(ads) {
             "link": link,
             "description": description
         }
-        let targetIndex = 0;
-
         for (var i = 0; i < state.ads.length; i++) {
             if (adItem.title === state.ads[i].title) {
-                targetIndex = i;
+                state.index = i;
             }
         }
         state.adForm = true;
@@ -77,8 +76,11 @@ function postAd(item) {
     state.adForm = false;
     render();
 }
-function editAd(item, index) {
-    state.ads[index] = item;
+function editAd(item) {
+    const index = state.index;
+    console.log(index);
+    state.ads.splice(index, 1, item);
+    editLocalStorage(index, item);
     state.adForm = false;
     render();
 
@@ -86,7 +88,7 @@ function editAd(item, index) {
 function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
-        renderAdForm($('.ad-form-container'), cancelAd, postAd);
+        renderAdForm($('.ad-form-container'), cancelAd, postAd, editAd);
         $('.createAd').hide()
     }
     else {

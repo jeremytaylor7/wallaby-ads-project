@@ -39,7 +39,13 @@
         })
         component.find('.adForm--edit').on('click', (e) => {
             e.preventDefault();
-            // editHandler();
+            editItem = {
+                "title": $('.adForm--title').val(),
+                "link": $('.adForm--url').val(),
+                "description": $('.adForm--description').val(),
+            }
+            console.log(editItem);
+            editHandler(editItem);
         })
     };
 
