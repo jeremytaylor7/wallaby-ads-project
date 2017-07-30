@@ -50,15 +50,28 @@ function getLocalStorage(callback) {
     return Promise.resolve(adStorage);
 }
 
-function editLocalStorage(item) {
+function editLocalStorage(item, index) {
     const parsedAds = JSON.parse(localStorage.getItem('ads'));
     for (var i = 0; i <= parsedAds.length; i++) {
-        if (item === parsedAds[i]) {
-            item = parsedAds[i];
+        if (index === i) {
+            parsedAds[i] = item;
         }
     }
-    console.log(parsedAds);
+    console.log(item);
     localStorage.setItem('ads', JSON.stringify(parsedAds));
+}
+
+
+function deleteLocalStorage(index) {
+    const parsedAds = JSON.parse(localStorage.getItem('ads'));
+    for (var i = 0; i <= parsedAds.length; i++) {
+        if (index === i) {
+            parsedAds.splice(i, 1);
+        }
+    }
+    localStorage.setItem('ads', JSON.stringify(parsedAds));
+    console.log(localStorage);
+
 }
 
 // function getAds(callback) {

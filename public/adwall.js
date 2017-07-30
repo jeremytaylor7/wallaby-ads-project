@@ -1,7 +1,16 @@
+if (this.module) {
+    module.exports = this;
+}
+
 const state = {
     ads: [],
     adForm: false,
     index: 0
+}
+
+function onEdit(title, state) {
+    state.index = state.ads.findIndex(item => item.title === title)
+    state.adForm = true;
 }
 
 function checkAdForm() {
@@ -10,6 +19,7 @@ function checkAdForm() {
         render();
     })
 }
+
 
 /*
 UI > State > API
@@ -24,7 +34,7 @@ const adsTemplate = (title, link, description) => {
     <p class="title">${title}</p>
     <a href="${link}" class="link">Visit Website</a>
     <p class="description">${description}</p>
-    <button class"delete-btn">Delete</button>
+    <button class="delete-btn">Delete</button>
     <button class="edit-button">Edit Ad</button>
     </div>`
 };
@@ -34,28 +44,32 @@ function displayAds(ads) {
     })
     const adString = adsList.join('');
     $('.ad-block-container').html(adString);
-    $('.edit-button').on('click', e => {
-        const title = $(event.target).parent().find('.title').text();
-        const link = $(event.target).parent().find('.link').attr('href');
-        const description = $(event.target).parent().find('.description').text();
 
-        const adItem = {
-            "title": title,
-            "link": link,
-            "description": description
-        }
-        for (var i = 0; i < state.ads.length; i++) {
-            if (adItem.title === state.ads[i].title) {
-                state.index = i;
-            }
-        }
-        state.adForm = true;
-        render();
-        $('.adForm--title').val(adItem.title);
-        $('.adForm--url').val(adItem.link);
-        $('.adForm--description').val(adItem.description);
+    $('.delete-btn').on('click', e => {
+        deleteAdHandler();
+        deleteAd();
+    })
+    $('.edit-button').on('click', e => {
+
+        editHandler(e);
+
     });
 }
+
+function editHandler(e) {
+
+    const title = $(event.target).parent().find('.title').text();
+    const link = $(event.target).parent().find('.link').text();
+    const description = $(event.target).parent().find('.description').text();
+    onEdit(title, state);
+    render();
+    $('.adForm--title').val(title);
+    $('.adForm--url').val(link);
+    $('.adForm--description').val(description);
+
+}
+
+
 
 //  function renderAdForm() {
 
@@ -80,15 +94,27 @@ function editAd(item) {
     const index = state.index;
     console.log(index);
     state.ads.splice(index, 1, item);
-    editLocalStorage(index, item);
+    editLocalStorage(item, index);
     state.adForm = false;
     render();
 
 }
+function deleteAd() {
+    const index = state.index;
+    for (let i = 0; i <= index; i++) {
+        if (index === i) {
+            state.ads.splice(index, 1);
+            console.log('item deleted');
+        }
+    }
+    deleteLocalStorage(index);
+    render();
+}
+
 function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
-        renderAdForm($('.ad-form-container'), cancelAd, postAd, editAd);
+        renderAdForm($('.ad-form-container'), cancelAd, postAd, editAd, deleteAd);
         $('.createAd').hide()
     }
     else {
@@ -98,10 +124,23 @@ function render() {
 }
 
 function watchHandlers() {
-    $('.edit-button').click((e) => {
-        alert('It works!');
-    })
 
+}
+function deleteAdHandler() {
+    const title = $(event.target).parent().find('.title').text();
+    const link = $(event.target).parent().find('.link').attr('href');
+    const description = $(event.target).parent().find('.description').text();
+
+    const adItem = {
+        "title": title,
+        "link": link,
+        "description": description
+    }
+    for (var i = 0; i < state.ads.length; i++) {
+        if (adItem.title === state.ads[i].title) {
+            state.index = i;
+        }
+    }
 }
 
 //post ad functions
@@ -112,12 +151,15 @@ function addToState(MOCK_ADS) {
         state.ads.push(item);
     })
 }
-
 $(function () {
+    getLocalStorage().then(displayAds);
+    saveAds();
     getLocalStorage().then(addToState);
-    render();
     displayAds(state.ads);
+    render();
     watchHandlers();
     checkAdForm();
+
 })
+
 
