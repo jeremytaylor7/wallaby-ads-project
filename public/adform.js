@@ -6,7 +6,7 @@
                 <label>Website url:</label>
                 <input type="text" class="adForm--url" name="URL"></input>
                 <label>Description</label>
-                <input type="text" class="adForm--description" name="Description"></input>
+                <textarea class="adForm--description" name="Description"></textarea>
                 <button type="submit" class="adForm--submit">Post Ad</button>
                 <button type="submit" class="adForm--edit">Save Changes</button>
                 <button class="adForm--cancel">Cancel</button>

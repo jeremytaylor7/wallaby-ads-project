@@ -1,15 +1,51 @@
-.container {
-    width: 500px;
-    height: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #12F397;
-    border: 1px solid black;
-    padding: 5px 5px;
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+
+body {
+    background-color: #6BE1FF;
 }
 
+.navbar {
+    background-color: #7884FF;
+    border: 1px solid black;
+    margin-bottom: 10px;
+
+}
+
+p {
+    font-size: 30px;
+
+        background-color: #7884FF;
+
+}
+.login {
+    float: right;
+}
+
+h1 {
+    font-size: 50px;
+    background-color: #7884FF;
+    margin-bottom: 0;
+    margin-top: 10px;
+    height: 50px;
+
+}
+.about {
+
+    background-color: #7884FF;
+                
+}
+
+.intro-header {
+    width: 100%;
+    height: 200px;
+    background-image: url("marketing.png");
+    display: block;
+    margin-top: 0;
+}
 p, h1, h2 {
     text-align: center;
+    font-family: 'PT Sans Narrow';
+    color: white;
 }
 input {
     display: block;
@@ -18,3 +54,20 @@ input {
     margin: 0 auto;
 }
 
+.form-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 500px;
+}
+
+input {
+    width: 300px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+ .button {
+    width: 100px;
+    height: 50px;
+}
