@@ -30,12 +30,14 @@ don't store whole state, just whatever I need
 
 const adsTemplate = (title, link, description) => {
 
-    return `<div class="adsblock">
-    <p class="title">${title}</p>
-    <a href="${link}" class="link">Visit Website</a>
+    return `<div class="adsblock col-sm-3">
+    <p class="title"><u>${title}</u></p>
+    <hr>
     <p class="description">${description}</p>
-    <button class="delete-btn">Delete</button>
-    <button class="edit-button">Edit Ad</button>
+    <hr>
+    <a class="btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
+    <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
+    <button type="button" class="btn btn-danger delete-btn btn-sm">Delete</button>
     </div>`
 };
 function displayAds(ads) {
