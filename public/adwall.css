@@ -31,13 +31,6 @@ h1 {
     margin-right: auto;
 }
 
-.createAd{
-    display: block;
-    width: 100px;
-    height: 25px;
-    margin-bottom: 10px;
-}
-
 .ad-form-container{
     margin-left: auto;
     margin-right: auto;
@@ -45,23 +38,17 @@ h1 {
 }
 
 
-
-.nav {
-    width: 100%;
-    border: 2px solid black;
-    float: left;
-    background-color: #6BE1FF;
+.navbar {
+    background-color: #7884FF;
+    border: 1px solid black;
     margin-bottom: 10px;
+
+}
+
+.intro-container {
+
+    background-color: #7884FF;
     height: 50px;
-    
-}
-
-.nav > ul {
-    list-style: none;
-}
-
-.nav > ul > li {
-    padding-right: 20px;
-    float: left;
+    width: 100%;
 }
 

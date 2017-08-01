@@ -1,16 +1,24 @@
 
 (function () {
-    const HTML = `<form class="adForm--container" action="/posts" method="POST">
+    const HTML = `<div class="container">
+                <div class="row">
+                <form class="adForm--container" action="/posts" method="POST">
+                <div class="col-md-6">
                 <label>Title:</label>
                 <input type="text" class="adForm--title" name="title"></input>
+                </div>
+                <div class="col-md-6">
                 <label>Website url:</label>
                 <input type="text" class="adForm--url" name="URL"></input>
+                </div>
                 <label>Description</label>
                 <textarea class="adForm--description" name="Description"></textarea>
                 <button type="submit" class="adForm--submit">Post Ad</button>
                 <button type="submit" class="adForm--edit">Save Changes</button>
                 <button class="adForm--cancel">Cancel</button>
-            </form> `
+            </form>
+            </div> 
+            </div>`
     window.renderAdForm = function (element, cancelClickHandler, postHandler, editHandler) {
 
         const component = element.html(HTML);

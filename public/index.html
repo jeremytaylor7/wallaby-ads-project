@@ -14,6 +14,7 @@
 
 <body>
 
+
     <nav class="navbar navbar-toggleable-sm navbar-inverse ">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,21 +40,31 @@
     <h1>Welcome To Wallaby Ads!</h1>
     <div class="intro-header">
     </div>
-
     <h2 class="intro">a free ad directory made by marketers for marketers..</h2>
-    <p class="about">Wallaby allows marketers of all niches to simply and effectively gain exposure to their online business by using a free
-        to post ad directory created specifically for internet marketers.
-    </p>
+
     <p class="register">Sign up to start posting today!</p>
-    <div class="form-container">
-        <form action="/adwall">
-            <input class="first-name"></input>
-            <input class="last-name"></input>
-            <input class="username"></input>
-            <input class="password"></input>
-            <input class="email"></input>
-            <input type="submit" class="button" value="Sign Up"></input>
-        </form>
+
+    <div class="container">
+        <div class="row">
+            <p class="about col-md-6">Wallaby allows marketers of all niches to simply and effectively gain exposure to their online business by using
+                a free to post ad directory created specifically for internet marketers.
+            </p>
+            <div class="form-container col-md-6">
+                <form action="/adwall">
+                    <label for="first-name">First Name:</label>
+                    <input class="first-name"></input>
+                    <label>Last Name:</label>
+                    <input class="last-name"></input>
+                    <label>Username:</label>
+                    <input class="username"></input>
+                    <label>Password:</label>
+                    <input class="password"></input>
+                    <label>Email:</label>
+                    <input class="email"></input>
+                    <button type="submit" class="btn btn-success my-2">Register</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"

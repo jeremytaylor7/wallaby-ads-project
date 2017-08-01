@@ -4,7 +4,12 @@
 <head>
     <link rel="stylesheet" type="text/css" href="adwall.css">
     <link rel="stylesheet" type="text/css" href="adform.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+
     <div class="container">
         <div class="row">
             <title class="col-sm-12">Wallaby AdWall!</title>
@@ -13,19 +18,37 @@
 </head>
 
 <body>
-    <header>
-        <div class="nav">
-            <ul>
-                <li class="home">Home</li>
-                <li class="wall">Wall</li>
-                <li class="categories">Categories</li>
-                <li class="profile">Profile</li>
+
+    <nav class="navbar navbar-toggleable-sm navbar-inverse ">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <a class="navbar-brand" href="#">Wallaby Ads</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Adwall</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
             </ul>
         </div>
-    </header>
-    <h1>Welcome to the AdWall!
-    </h1>
-    <button class="createAd">Create Ad</button>
+    </nav>
+    <div class="intro-container">
+        <h1>Welcome to the AdWall!
+        </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <button type="button" class="createAd btn btn-success">Create Your Ad!</button>
+        </div>
+    </div>
     <div class="ad-form-container">
     </div>
 
@@ -33,12 +56,20 @@
 
     </div>
 
+
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous">
+
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
 <script src="adform.js"></script>
 <script src="adwall.js"></script>
 <script src="api.js"></script>
+
 
 
 
