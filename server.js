@@ -7,11 +7,13 @@ const postRouter = require('./routes/post');
 const dirRouter = require('./routes/directory');
 const myadsRouter = require('./routes/myads');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const port = 9777;
 const isProduction = 'production' === process.env.NODE_ENV;
 
 app.use(express.static('public'));
 app.listen(process.env.PORT || port, listening);
+app.use(passport.initialize());
 
 app.use('/dashboard', dashRouter);
 app.use('/adwall', adwallRouter);

@@ -5,7 +5,8 @@ if (this.module) {
 const state = {
     ads: [],
     adForm: false,
-    index: 0
+    index: 0,
+    editing: false
 }
 
 function onEdit(title, state) {
@@ -16,6 +17,7 @@ function onEdit(title, state) {
 function checkAdForm() {
     $('.createAd').on('click', function () {
         state.adForm = true;
+        state.editing = false;
         render();
     })
 }
@@ -59,7 +61,7 @@ function displayAds(ads) {
 }
 
 function editHandler(e) {
-
+    state.editing = true;
     const title = $(event.target).parent().find('.title').text();
     const link = $(event.target).parent().find('.link').text();
     const description = $(event.target).parent().find('.description').text();
@@ -71,17 +73,6 @@ function editHandler(e) {
 
 }
 
-
-
-//  function renderAdForm() {
-
-//     $('.ad-form-container').show();
-//     $('.cancel').on('click', function (event) {
-//         event.preventDefault();
-//         state.adForm = false;
-//         render();
-//     })
-// }
 
 function cancelAd() {
     state.adForm = false;
@@ -112,11 +103,18 @@ function deleteAd() {
     deleteLocalStorage(index);
     render();
 }
-
+function checkEditMode() {
+    if (state.editing === true) {
+        return 'Save Changes';
+    }
+    else {
+        return 'Post Ad';
+    }
+}
 function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
-        renderAdForm($('.ad-form-container'), cancelAd, postAd, editAd, deleteAd);
+        renderAdForm($('.ad-form-container'), cancelAd, state.editing ? editAd : postAd, checkEditMode());
         $('.createAd').hide()
     }
     else {
