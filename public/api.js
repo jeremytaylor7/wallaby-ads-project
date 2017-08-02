@@ -91,3 +91,8 @@ function getAndDisplayAds(callback) {
 //use api to get local storage add to state and render
 // all of my functions need to return promises in api
 // Promise.resolve documentation static promises
+
+
+//homework
+//write test for endpoints
+//if any logic beyond .find and json put in separate javascript file to unit test the file
