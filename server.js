@@ -1,13 +1,18 @@
 const express = require('express');
 const browserSync = require('browser-sync');
 const app = express();
+const mongoose = require('mongoose');
 const dashRouter = require('./routes/dashboard');
 const adwallRouter = require('./routes/adwall');
 const postRouter = require('./routes/post');
 const dirRouter = require('./routes/directory');
+const userRouter = require('./routes/users');
 const myadsRouter = require('./routes/myads');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const { DATABASE_URL, PORT } = require('./config.js');
+
+
 const port = 9777;
 const isProduction = 'production' === process.env.NODE_ENV;
 
@@ -20,6 +25,7 @@ app.use('/adwall', adwallRouter);
 app.use('/posts', postRouter);
 app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
+app.use('/users', userRouter);
 
 app.use(bodyParser.json());
 
@@ -37,6 +43,44 @@ function listening() {
         });
     }
 }
+let server;
 
+function runServer() {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DATABASE_URL, err => {
+            if (err) {
+                return reject(err);
+            }
+            server = app.listen(PORT, () => {
+                console.log(`Your app is listening on port ${PORT}`);
+                resolve();
+            })
+                .on('error', err => {
+                    mongoose.disconnect();
+                    reject(err);
+                });
+        });
+    });
+}
+
+function closeServer() {
+    return mongoose.disconnect().then(() => {
+        return new Promise((resolve, reject) => {
+            console.log('Closing server');
+            server.close(err => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve();
+            });
+        });
+    });
+}
+
+if (require.main === module) {
+    runServer().catch(err => console.error(err));
+};
+
+module.exports = { app, runServer, closeServer };
 
 module.exports = app;

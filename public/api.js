@@ -94,5 +94,9 @@ function getAndDisplayAds(callback) {
 
 
 //homework
+//send the feedback
 //write test for endpoints
 //if any logic beyond .find and json put in separate javascript file to unit test the file
+//underscore or lowdash or use jquery
+// prevent users from putting scrupts in the title and description (escape on the client side)
+// do basic auth
