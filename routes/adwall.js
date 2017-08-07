@@ -10,6 +10,8 @@ const router = express.Router();
 const app = express();
 
 router.use(jsonParser);
+router.use(passport.initialize());
+
 app.use(express.static('public'));
 
 const basicStrategy = new BasicStrategy((username, password, callback) => {
@@ -36,15 +38,24 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
 });
 
 passport.use(basicStrategy);
-router.use(passport.initialize());
 
 router.get('/',
     passport.authenticate('basic', { session: true }), function (req, res) {
         res.sendFile(path.resolve('./public/adwall.html'));
         // res.json({ user: req.user.apiRepr() });
-    })
+    });
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.sendFile(path.resolve('./public/logout.html'));
+});
 
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
 
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
 
 
 
