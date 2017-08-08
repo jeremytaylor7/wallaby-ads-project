@@ -8,7 +8,7 @@ const logout = require('express-passport-logout');
 
 
 router.get('/', function (req, res) {
-    logout();
+    req.logout();
     console.log('logged out');
     res.sendFile(path.resolve('./public/logout.html'));
 })

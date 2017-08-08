@@ -1,5 +1,6 @@
 const path = require('path');
 const { BasicStrategy } = require('passport-http');
+const Strategy = require('passport-facebook').Strategy;
 const express = require('express');
 const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
@@ -9,46 +10,31 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const router = express.Router();
 const app = express();
 
-router.use(jsonParser);
-router.use(passport.initialize());
+// router.use(jsonParser);
+// router.use(passport.initialize());
 
-app.use(express.static('public'));
+router.use(express.static('public'));
+passport.use(new Strategy({
+    clientID: '472280536469569',
+    clientSecret: '7d851fff7f9ca432d04716834afa1ca7',
+    callbackURL: 'http://localhost:8080/adwall/facebook/auth/cb'
+},
+    function (accessToken, refreshToken, profile, cb) {
+        return cb(null, profile);
+    }
+));
 
-const basicStrategy = new BasicStrategy((username, password, callback) => {
-    let user;
-    User
-        .findOne({ username: username })
-        .exec()
-        .then(_user => {
-            user = _user;
-            if (!user) {
-                return callback(null, false);
-            }
-            return user.validatePassword(password);
-        })
-        .then(isValid => {
-            if (!isValid) {
-                return callback(null, false);
-            }
-            else {
-                return callback(null, user);
-            }
-        })
-        .catch(err => callback(err));
+router.get('/', function (req, res) {
+    console.log('request made for adwall');
+    res.sendFile(path.resolve('./public/adwall.html'));
 });
 
-passport.use(basicStrategy);
-
-router.get('/',
-    passport.authenticate('basic', { session: true }), function (req, res) {
-        res.sendFile(path.resolve('./public/adwall.html'));
-        // res.json({ user: req.user.apiRepr() });
-    });
-router.get('/logout', (req, res) => {
-    req.logout();
-    res.sendFile(path.resolve('./public/logout.html'));
-});
-
+router.get('/facebook/auth', passport.authenticate('facebook'));
+router.get('/facebook/auth/cb',
+    passport.authenticate('facebook', {
+        successRedirect: '/register',
+        failureRedirect: '/login'
+    }));
 passport.serializeUser(function (user, done) {
     done(null, user);
 });

@@ -1,10 +1,28 @@
 const mongoose = require('mongoose');
 
-const postSchema = mongoose.Schema({
-    "title": String,
-    "link": String,
-    "description": String
-})
-const Post = mongoose.model('post', postSchema);
+mongoose.Promise = global.Promise;
 
-module.exports = { Post };
+const PostSchema = mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    url: {
+        type: String,
+        required: true
+    }
+
+});
+
+// PostSchema.methods.apiRepr = function () {
+//     return {
+//         username: this.username || '',
+//         firstName: this.firstName || '',
+//         lastName: this.lastName || ''
+//     };
+// }
+
+const User = mongoose.model('Post', PostSchema);
+
+module.exports = { User };
