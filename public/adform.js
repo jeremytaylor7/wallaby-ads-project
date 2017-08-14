@@ -8,6 +8,8 @@
                 <input type="text" class="adForm--url" name="URL"></input>
                 <label>Description</label>
                 <textarea class="adForm--description" name="Description"></textarea>
+                <label>Your Ad Pin</label>
+                <input class="adForm--code" name="codeField" value="123"></input>
                 <button type="submit" class="adForm--submit">${btnTitle}</button>
                 <button class="adForm--cancel">Cancel</button>
             </form>`
