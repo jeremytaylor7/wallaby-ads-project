@@ -32,8 +32,15 @@ don't store whole state, just whatever I need
 
 const adsTemplate = (title, link, description) => {
 
-    const template = $('#ad-template').html();
-    return Mustache.render(template, { title, link, description });
+    return `<div class="adsblock col-sm-3">
+    <p class="title"><u>${title}</u></p>
+    <hr>
+    <p class="description">${description}</p>
+    <hr>
+    <a class="btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
+    <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
+    <button type="button" class="btn btn-danger delete-btn btn-sm">Delete</button>
+    </div>`
 };
 function displayAds(ads) {
     const adsList = ads.map((item) => {

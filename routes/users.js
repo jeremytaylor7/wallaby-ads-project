@@ -1,11 +1,9 @@
 const { BasicStrategy } = require('passport-http');
 const express = require('express');
-const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
 const passport = require('passport');
 
 const { User } = require('../models/usermodel.js');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const router = express.Router();
 
@@ -38,7 +36,7 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
-router.post('/', urlencodedParser, (req, res) => {
+router.post('/', (req, res) => {
     if (!req.body) {
         return res.status(400).json({ message: 'No request body' });
     }
@@ -116,8 +114,6 @@ router.get('/me',
     passport.authenticate('basic', { session: false }),
     (req, res) => res.json({ user: req.user.apiRepr() })
 );
-
-
 
 
 module.exports = router;

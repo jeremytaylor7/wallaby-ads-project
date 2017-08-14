@@ -100,10 +100,3 @@ function getAndDisplayAds(callback) {
 //underscore or lowdash or use jquery
 // prevent users from putting scrupts in the title and description (escape on the client side)
 // do basic auth
-
-// next steps
-//write test for endpoints
-//protect update and delete endpoints on client side check if logged in and show them different buttons
-//start connecting to api
-//create logout
-//finish up!
