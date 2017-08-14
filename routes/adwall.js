@@ -1,42 +1,38 @@
 const path = require('path');
+const { BasicStrategy } = require('passport-http');
 const Strategy = require('passport-facebook').Strategy;
 const express = require('express');
 const bodyParser = require('body-parser');
 const jsonParser = require('body-parser').json();
 const passport = require('passport');
 const { User } = require('../models/usermodel.js');
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const router = express.Router();
 const app = express();
-app.use(bodyParser);
+
+// router.use(jsonParser);
+// router.use(passport.initialize());
 
 router.use(express.static('public'));
-
 passport.use(new Strategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_SECRET,
-    callbackURL: 'http://localhost:8080/adwall/facebook/auth/cb',
-    profileFields: ['id', 'displayName', 'photos', 'email']
-
+    clientID: '472280536469569',
+    clientSecret: '7d851fff7f9ca432d04716834afa1ca7',
+    callbackURL: 'http://localhost:8080/adwall/facebook/auth/cb'
 },
     function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
     }
-
 ));
 
-router.get('/public', passport.authenticate('facebook'), function (req, res) {
-    console.log(req.isAuthenticated());
+router.get('/', function (req, res) {
+    console.log('request made for adwall');
     res.sendFile(path.resolve('./public/adwall.html'));
 });
 
-router.get('/facebook/logout', (req, res) => {
-    req.logout();
-    res.end();
-})
 router.get('/facebook/auth', passport.authenticate('facebook'));
 router.get('/facebook/auth/cb',
     passport.authenticate('facebook', {
-        successRedirect: '/adwall/public',
+        successRedirect: '/register',
         failureRedirect: '/login'
     }));
 passport.serializeUser(function (user, done) {
