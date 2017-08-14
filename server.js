@@ -18,6 +18,9 @@ const bodyParser = require('body-parser');
 const logoutRouter = require('./routes/logout')
 const successRouter = require('./routes/success');
 const { DATABASE_URL, PORT } = require('./config.js');
+
+
+
 const port = 9777;
 const isProduction = 'production' === process.env.NODE_ENV;
 
@@ -27,7 +30,7 @@ app.use(passport.initialize());
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/dashboard', dashRouter);
-app.use('/adwall', adwallRouter);
+// app.use('/adwall', adwallRouter);
 app.use('/posts', postRouter);
 app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
@@ -40,7 +43,6 @@ app.use(require('morgan')('combined'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-app.use(passport());
 
 
 function listening() {
@@ -125,12 +127,12 @@ app.get('/facebook/auth/cb',
     }));
 // public router
 //cannot use passport.auth on other links
-// //add this router back to adwall.js
-// app.get('/adwall', function (req, res) {
-//     console.log(req.isAuthenticated());
-//     console.log(req.user);
-//     res.sendFile(path.resolve('./public/adwall.html'));
-// });
+//add this router back to adwall.js
+app.get('/adwall', function (req, res) {
+    console.log(req.isAuthenticated());
+    console.log(req.user);
+    res.sendFile(path.resolve('./public/adwall.html'));
+});
 
 if (require.main === module) {
     runServer().catch(err => console.error(err));
