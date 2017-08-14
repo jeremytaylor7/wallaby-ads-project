@@ -109,25 +109,6 @@ router.get('/', (req, res) => {
         .catch(err => console.log(err) && res.status(500).json({ message: 'Internal server error' }));
 });
 
-// router.put('/:id', (req, res) => {
-//     console.log('updating user');
-//     return User
-//         .find({ id: req.params.id })
-//         .exec()
-//         .then(user => { })
-//         .catch(err => console.log(err) && res.status(500).json({ message: 'Internal server error' }));
-//     res.end();
-// })
-
-
-// router.delete('/:id', (req, res) => {
-//     return User
-//         .findByIdAndRemove({ id: req.params.id })
-//         .then(() => { console.log('item successfully removed') })
-//         .catch(err => { console.log(err) && res.status(500).json({ message: 'Internal server error' }) });
-//     console.log('deleting user');
-//     res.end();
-// })
 
 
 

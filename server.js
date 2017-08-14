@@ -8,7 +8,6 @@ const loginRouter = require('./routes/login');
 const postRouter = require('./routes/post');
 const registerRouter = require('./routes/register');
 const dirRouter = require('./routes/directory');
-const adsRouter = require('./routes/ads');
 const userRouter = require('./routes/users');
 const myadsRouter = require('./routes/myads');
 const bodyParser = require('body-parser');
@@ -35,7 +34,7 @@ app.use('/myads', myadsRouter);
 app.use('/users', userRouter);
 app.use('/logout', logoutRouter);
 app.use('/register-success', successRouter);
-app.use('/api/ads', adsRouter);
+
 app.use(bodyParser.json());
 
 function listening() {

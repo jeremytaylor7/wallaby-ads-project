@@ -8,6 +8,7 @@ router.get('/', function (req, res) {
 })
 
 
+module.exports = router;
 
 router.post('/',
     passport.authenticate('local'),
@@ -17,4 +18,3 @@ router.post('/',
         res.redirect('/users/' + req.user.username);
     });
 
-module.exports = router;
