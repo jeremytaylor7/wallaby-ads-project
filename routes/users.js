@@ -94,7 +94,7 @@ router.post('/', urlencodedParser, (req, res) => {
                 })
         })
         .then(user => {
-            return res.status(201).redirect('/register-success');
+            return res.status(201).redirect('/adwall');
         })
         .catch(err => {
             res.status(500).json({ message: 'Internal server error' })

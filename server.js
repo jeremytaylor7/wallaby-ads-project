@@ -13,7 +13,6 @@ const myadsRouter = require('./routes/myads');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const logoutRouter = require('./routes/logout')
-const successRouter = require('./routes/success');
 const { DATABASE_URL, PORT } = require('./config.js');
 
 
@@ -33,7 +32,6 @@ app.use('/directory', dirRouter);
 app.use('/myads', myadsRouter);
 app.use('/users', userRouter);
 app.use('/logout', logoutRouter);
-app.use('/register-success', successRouter);
 
 app.use(bodyParser.json());
 
