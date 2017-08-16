@@ -1,5 +1,4 @@
 exports.PORT = process.env.PORT || 8080;
-exports.DB_URL = '';
+exports.DATABASE_URL = 'mongodb://admin:toby123@ds061506.mlab.com:61506/wallabyads';
 
 
-'mongo ds061506.mlab.com:61506 / wallabyads - u admin - p toby123'

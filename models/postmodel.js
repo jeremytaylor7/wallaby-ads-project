@@ -4,7 +4,7 @@ const postSchema = mongoose.Schema({
     "title": String,
     "link": String,
     "description": String,
-    "adCode": String
+    "adCode": Number
 })
 const Post = mongoose.model('post', postSchema);
 
