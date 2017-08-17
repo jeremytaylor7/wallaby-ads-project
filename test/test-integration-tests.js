@@ -1,5 +1,6 @@
 const chaiHttp = require('chai-http');
 const express = require('express')
+const { Post } = require('../models/postmodel');
 const bodyParser = require('body-parser');
 const chai = require('chai');
 const should = chai.should();
@@ -21,16 +22,33 @@ describe('API Test for Ad Endpoints', function () {
     it('should make a successful get request', function () {
         return chai.request(app)
             .get('/api/ads')
-            .end(function (res) {
+            .then(function (res) {
+                console.log(res.body.length);
                 res.should.have.status(200);
+                res.body.should.have.length.of.at.least(1);
             })
     })
-
+    const testObj = {
+        "title": "The best online course",
+        "link": "bestcourse.com",
+        "description": "this is the best course EVER!",
+        "adCode": 5555
+    }
     it('should make a successful post request', function () {
         return chai.request(app)
-            .get('/api/ads')
-            .end(function (err, res) {
+            .post('/api/ads')
+            .send(testObj)
+            .then(function (res) {
+                console.log(res.body);
                 res.should.have.status(200);
+                res.should.be.json();
+                res.body.should.include.keys(
+                    'title', 'link', 'description', 'adCode'
+                )
+                res.body.title.should.not.be.null;
+                res.body.link.should.not.be.null;
+                res.body.description.should.not.be.null;
+                res.body.adCode.should.not.be.null;
             })
     })
 
