@@ -5,11 +5,12 @@
                 <label>Title:</label>
                 <input type="text" class="adForm--title" name="title"></input>
                 <label>Website url:</label>
-                <input type="text" class="adForm--url" name="URL"></input>
+                <input type="text" class="adForm--url" name="link"></input>
                 <label>Description</label>
-                <textarea class="adForm--description" name="Description"></textarea>
+                <textarea class="adForm--description" name="description"></textarea>
                 <label>Your Ad Pin</label>
-                <input class="adForm--code" name="codeField" value="123"></input>
+                <input class="adForm--code" name="adCode" value="5513" readonly></input>
+                <button type="submit">Submit</button>
                 <button type="submit" class="adForm--submit">${btnTitle}</button>
                 <button class="adForm--cancel">Cancel</button>
             </form>`

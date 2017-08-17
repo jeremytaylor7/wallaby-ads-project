@@ -16,6 +16,11 @@ router.get('/', (req, res) => {
             console.log(posts);
             res.status(200).json(posts);
         })
+        .catch(
+        err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        });
 })
 
 router.post('/', (req, res) => {
@@ -25,14 +30,18 @@ router.post('/', (req, res) => {
             console.log(user);
             res.status(200).json(user);
         })
-    res.send('post request api');
+        .catch(
+        err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        });
 })
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     res.send('put request api');
 });
 
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     res.send('delete request api');
 })
 
