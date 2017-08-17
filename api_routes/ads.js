@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
         .find()
         .exec()
         .then(posts => {
-            console.log(posts);
             res.status(200).json(posts);
         })
         .catch(
@@ -38,11 +37,32 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    res.send('put request api');
+
+    return Post
+        .findByIdAndUpdate(req.params.id,
+        {
+            $set: {
+                "title": req.body.title,
+                "link": req.body.link,
+                "description": req.body.description
+            }
+        }, function (err, post) {
+            if (err) { console.error(err) }
+            res.status(204).json({ post });
+        });
 });
 
 router.delete('/:id', (req, res) => {
-    res.send('delete request api');
+    return Post
+        .findByIdAndRemove(req.params.id)
+        .exec()
+        .then(() => {
+            res.status(204).json({ message: "item deleted successfully" });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
 })
 
 module.exports = router;
