@@ -29,9 +29,9 @@ describe('API Test for Ad Endpoints', function () {
             })
     })
     const testObj = {
-        "title": "The best online course",
-        "link": "bestcourse.com",
-        "description": "this is the best course EVER!",
+        "title": "The best online course!!",
+        "link": "bestcourse.com!",
+        "description": "this is the best course EVER!!",
         "adCode": 5555
     }
     it('should make a successful post request', function () {
@@ -51,22 +51,47 @@ describe('API Test for Ad Endpoints', function () {
                 res.body.adCode.should.not.be.null;
             })
     })
+    const updateObj = {
+        "title": "SUPER COURSE",
+        "link": "supercourse.com"
+    }
 
     it('should make a successful put request', function () {
-        return chai.request(app)
-            .get('/api/ads')
-            .then(function (res) {
-                res.should.have.status(500);
+        return Post
+            .findOne()
+            .exec()
+            .then(post => {
+                console.log(post.id);
+                return chai.request(app)
+                    .put('/api/ads/:id')
+                    .send(updateObj)
+            })
+            .then(res => {
+                res.body.should.not.be.null;
+                res.should.have.status(204);
+                res.title.should.equal(updateObj.title);
+                res.link.should.equal(updateObj.link);
             })
 
 
     })
 
     it('should make a successful delete request', function () {
-        return chai.request(app)
-            .get('/api/ads')
-            .end(function (err, res) {
-                res.should.have.status(200);
+        let postObj;
+        Post
+            .findOne()
+            .exec()
+            .then(post => {
+                postObj = post;
+                return chai.request(app)
+                    .delete(`api/ads/:${postId}`);
+            })
+            .then(res => {
+                res.should.have.status(204);
+                return Post.findById(postObj.id);
+            })
+            .then(post => {
+                should.not.exist(post);
             })
     })
 })
