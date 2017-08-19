@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         .create(req.body)
         .then(user => {
             console.log(user);
-            res.status(200).json(user);
+            res.status(201).json(user);
         })
         .catch(
         err => {
@@ -48,7 +48,7 @@ router.put('/:id', (req, res) => {
             }
         }, function (err, post) {
             if (err) { console.error(err) }
-            res.status(204).json({ post });
+            res.status(200).json({ post });
         });
 });
 
@@ -57,7 +57,7 @@ router.delete('/:id', (req, res) => {
         .findByIdAndRemove(req.params.id)
         .exec()
         .then(() => {
-            res.status(204).json({ message: "item deleted successfully" });
+            res.status(200).json({ message: "item deleted successfully" });
         })
         .catch(err => {
             console.log(err);
@@ -66,3 +66,4 @@ router.delete('/:id', (req, res) => {
 })
 
 module.exports = router;
+

@@ -2,6 +2,13 @@ if (this.module) {
     module.exports = this;
 }
 
+function random() {
+    let int = Math.random() * 10000;
+    return Math.floor(int);
+}
+
+const randomCode = random();
+
 const state = {
     ads: [],
     adForm: false,
@@ -43,10 +50,10 @@ const adsTemplate = (title, link, description) => {
     </div>`
 };
 function displayAds(ads) {
-    const adsList = ads.map((item) => {
+    const list = ads.map((item) => {
         return adsTemplate(item.title, item.link, item.description);
     })
-    const adString = adsList.join('');
+    const adString = list.join('');
     $('.ad-block-container').html(adString);
 
     $('.delete-btn').on('click', e => {
@@ -81,26 +88,31 @@ function cancelAd() {
 function postAd(item) {
     state.ads.push(item);
     state.adForm = false;
+    createAd(item);
     render();
+
 }
 function editAd(item) {
     const index = state.index;
+    const editId = state.ads[index]._id;
     console.log(index);
     state.ads.splice(index, 1, item);
-    editLocalStorage(item, index);
+    editLocalStorage(item, editId);
     state.adForm = false;
     render();
 
 }
 function deleteAd() {
     const index = state.index;
+    let adId = state.ads[index]._id
     for (let i = 0; i <= index; i++) {
         if (index === i) {
             state.ads.splice(index, 1);
             console.log('item deleted');
         }
     }
-    deleteLocalStorage(index);
+    console.log(adId);
+    deleteLocalStorage(index, adId);
     render();
 }
 function checkEditMode() {
@@ -115,6 +127,7 @@ function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
         renderAdForm($('.ad-form-container'), cancelAd, state.editing ? editAd : postAd, checkEditMode());
+        $('.adForm--code').val(randomCode);
         $('.createAd').hide()
     }
     else {
@@ -146,14 +159,14 @@ function deleteAdHandler() {
 //post ad functions
 
 
-function addToState(MOCK_ADS) {
-    MOCK_ADS.forEach(item => {
+function addToState(listOfAds) {
+    console.log(listOfAds);
+    listOfAds.forEach(item => {
         state.ads.push(item);
     })
 }
 $(function () {
     getLocalStorage().then(displayAds);
-    saveAds();
     getLocalStorage().then(addToState);
     displayAds(state.ads);
     render();

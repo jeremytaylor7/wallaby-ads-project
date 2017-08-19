@@ -1,7 +1,7 @@
 
 (function () {
     const HTML = btnTitle => `
-                <form class="adForm--container" action="/posts" method="POST">
+                <form class="adForm--container" action="/api/ads" method="POST">
                 <label>Title:</label>
                 <input type="text" class="adForm--title" name="title"></input>
                 <label>Website url:</label>
@@ -33,11 +33,10 @@
 
             const adItem = {
                 "title": e.target.title.value,
-                "link": e.target.URL.value,
-                "description": e.target.Description.value
+                "link": e.target.link.value,
+                "description": e.target.description.value
             }
             postHandler(adItem);
-            createAd(adItem).then(saveAds());
 
 
         })

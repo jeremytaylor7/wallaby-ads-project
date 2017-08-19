@@ -33,45 +33,76 @@ const MOCK_ADS = {
 
 
 function createAd(item, callback) {
-    MOCK_ADS.fakeAds.push(item);
-    saveAds();
+    fetch('/api/ads', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "title": item.title,
+            "link": item.link,
+            "description": item.description,
+        })
+    })
     return Promise.resolve('success');
 
 }
 
-function saveAds() {
-    localStorage.setItem('ads', JSON.stringify(MOCK_ADS.fakeAds));
-    return Promise.resolve('success');
+// function saveAds() {
+//     fetch('/api/ads', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             "title": "Hubot",
+//             "link": "hubot",
+//             "description": "hey",
+//         })
+//     })
+//     localStorage.setItem('ads', JSON.stringify(MOCK_ADS.fakeAds));
+//     return Promise.resolve('success');
 
-}
+// }
 
 function getLocalStorage(callback) {
-    const adStorage = JSON.parse(localStorage.getItem('ads'));
-    return Promise.resolve(adStorage);
+    const apiAds = fetch('/api/ads')
+        .then(res => {
+            return res.json();
+        })
+    // remove mock ads
+    // const adStorage = JSON.parse(localStorage.getItem('ads'));
+    return Promise.resolve(apiAds);
 }
 
-function editLocalStorage(item, index) {
-    const parsedAds = JSON.parse(localStorage.getItem('ads'));
-    for (var i = 0; i <= parsedAds.length; i++) {
-        if (index === i) {
-            parsedAds[i] = item;
-        }
-    }
-    console.log(item);
-    localStorage.setItem('ads', JSON.stringify(parsedAds));
+function editLocalStorage(item, id) {
+
+    return fetch(`/api/ads/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "title": item.title,
+            "link": item.link,
+            "description": item.description,
+
+        })
+
+    })
+        .then(res => {
+            console.log(res);
+        })
 }
 
 
-function deleteLocalStorage(index) {
-    const parsedAds = JSON.parse(localStorage.getItem('ads'));
-    for (var i = 0; i <= parsedAds.length; i++) {
-        if (index === i) {
-            parsedAds.splice(i, 1);
-        }
-    }
-    localStorage.setItem('ads', JSON.stringify(parsedAds));
-    console.log(localStorage);
-
+function deleteLocalStorage(index, id) {
+    return fetch(`/api/ads/${id}`, {
+        method: 'delete'
+    })
+        .then(res => {
+            console.log(res);
+        })
 }
 
 // function getAds(callback) {
