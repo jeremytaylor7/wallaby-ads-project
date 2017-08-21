@@ -87,20 +87,25 @@ function cancelAd() {
     render();
 }
 function postAd(item) {
-    state.ads.push(item);
+    state.ads.push({
+        "title": item.title,
+        "link": item.link,
+        "description": item.description
+    });
     state.adForm = false;
     createAd(item);
     render();
 
 }
-function editAd(item) {
+function editAd(item, formCode) {
     const index = state.index;
     const editId = state.ads[index]._id;
     checkadCode(editId)
         .then(code => {
+            console.log(code);
             console.log(code.adCode + 'the code!');
-            console.log(item.adCode);
-            if (code.adCode === item.adCode) {
+            console.log('user entered' + formCode);
+            if (code.adCode === formCode) {
                 console.log('we found a match!');
                 state.ads.splice(index, 1, item);
                 editLocalStorage(item, editId);

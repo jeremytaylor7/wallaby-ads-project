@@ -66,7 +66,7 @@ function createAd(item, callback) {
 
 // }
 
-function getLocalStorage(callback) {
+function getAds(callback) {
     const apiAds = fetch('/api/ads')
         .then(res => {
             return res.json();
@@ -82,7 +82,7 @@ function checkadCode(id) {
         });
 }
 
-function editLocalStorage(item, id) {
+function editAds(item, id) {
     fetch(`/api/ads/${id}`, {
         method: 'PUT',
         headers: {
@@ -101,7 +101,7 @@ function editLocalStorage(item, id) {
 }
 
 
-function deleteLocalStorage(index, id) {
+function deleteAds(index, id) {
     return fetch(`/api/ads/${id}`, {
         method: 'delete'
     })
@@ -112,7 +112,7 @@ function deleteLocalStorage(index, id) {
 
 // function getAds(callback) {
 //     callback(ads);
-//     return getLocalStorage();
+//     return getAds();
 // }/
 
 function getAndDisplayAds(callback) {

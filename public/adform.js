@@ -37,7 +37,8 @@
                 "description": e.target.description.value,
                 "adCode": e.target.adCode.value
             }
-            postHandler(adItem);
+            const formCode = $('.adForm--code').val()
+            postHandler(adItem, formCode);
 
 
         })
