@@ -22,7 +22,11 @@ body {
     margin-top: 10px;
     font-family: 'PT Sans Narrow';
 } 
- 
+ .code-validator {
+     display: none;
+     color: red;
+     font-size: 15px;;
+ }
  
 .ad-block-container {
     width: 100%;

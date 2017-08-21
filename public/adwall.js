@@ -13,7 +13,8 @@ const state = {
     ads: [],
     adForm: false,
     index: 0,
-    editing: false
+    editing: false,
+    codeValid: false
 }
 
 function onEdit(title, state) {
@@ -70,7 +71,7 @@ function displayAds(ads) {
 function editHandler(e) {
     state.editing = true;
     const title = $(event.target).parent().find('.title').text();
-    const link = $(event.target).parent().find('.link').text();
+    const link = $(event.target).parent().find('.link').attr('href');
     const description = $(event.target).parent().find('.description').text();
     onEdit(title, state);
     render();
@@ -95,11 +96,23 @@ function postAd(item) {
 function editAd(item) {
     const index = state.index;
     const editId = state.ads[index]._id;
-    console.log(index);
-    state.ads.splice(index, 1, item);
-    editLocalStorage(item, editId);
-    state.adForm = false;
-    render();
+    checkadCode(editId)
+        .then(code => {
+            console.log(code.adCode + 'the code!');
+            console.log(item.adCode);
+            if (code.adCode === item.adCode) {
+                console.log('we found a match!');
+                state.ads.splice(index, 1, item);
+                editLocalStorage(item, editId);
+                state.adForm = false;
+                render();
+            }
+            else {
+                console.log('invalid ad code!');
+                state.codeValid = true;
+                render();
+            }
+        });
 
 }
 function deleteAd() {
@@ -127,12 +140,23 @@ function render() {
     $('.ad-form-container').empty();
     if (state.adForm === true) {
         renderAdForm($('.ad-form-container'), cancelAd, state.editing ? editAd : postAd, checkEditMode());
-        $('.adForm--code').val(randomCode);
         $('.createAd').hide()
+        $('.adForm--code').val(randomCode);
     }
     else {
         $('.createAd').show();
     }
+
+    if (state.editing === true) {
+        $('.adForm--code').val('');
+        $('.adForm--code').attr("readonly", false);
+        if (state.codeValid === true) {
+            $('.code-validator').show();
+            state.codeValid = false;
+        }
+
+    }
+
     displayAds(state.ads);
 }
 

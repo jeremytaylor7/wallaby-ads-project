@@ -42,6 +42,7 @@ function createAd(item, callback) {
             "title": item.title,
             "link": item.link,
             "description": item.description,
+            "adCode": item.adCode
         })
     })
     return Promise.resolve('success');
@@ -74,10 +75,15 @@ function getLocalStorage(callback) {
     // const adStorage = JSON.parse(localStorage.getItem('ads'));
     return Promise.resolve(apiAds);
 }
+function checkadCode(id) {
+    return fetch(`/api/ads/${id}`)
+        .then(res => {
+            return res.json();
+        });
+}
 
 function editLocalStorage(item, id) {
-
-    return fetch(`/api/ads/${id}`, {
+    fetch(`/api/ads/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -86,7 +92,6 @@ function editLocalStorage(item, id) {
             "title": item.title,
             "link": item.link,
             "description": item.description,
-
         })
 
     })

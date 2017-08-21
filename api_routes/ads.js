@@ -22,6 +22,19 @@ router.get('/', (req, res) => {
         });
 })
 
+router.get('/:id', (req, res) => {
+    return Post
+        .findById(req.params.id)
+        .exec()
+        .then(post => {
+            res.status(200).json(post);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        })
+})
+
 router.post('/', (req, res) => {
     return Post
         .create(req.body)

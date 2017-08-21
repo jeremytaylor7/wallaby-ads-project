@@ -9,8 +9,8 @@
                 <label>Description</label>
                 <textarea class="adForm--description" name="description"></textarea>
                 <label>Your Ad Pin</label>
-                <input class="adForm--code" name="adCode" value="5513" readonly></input>
-                <button type="submit">Submit</button>
+                <input class="adForm--code" name="adCode" value="5513" readonly="true"></input>
+                <p class="code-validator">Your ad code is invalid! Please try again!</p>
                 <button type="submit" class="adForm--submit">${btnTitle}</button>
                 <button class="adForm--cancel">Cancel</button>
             </form>`
@@ -34,7 +34,8 @@
             const adItem = {
                 "title": e.target.title.value,
                 "link": e.target.link.value,
-                "description": e.target.description.value
+                "description": e.target.description.value,
+                "adCode": e.target.adCode.value
             }
             postHandler(adItem);
 
