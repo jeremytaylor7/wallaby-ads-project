@@ -108,7 +108,7 @@ function editAd(item, formCode) {
             if (code.adCode === formCode) {
                 console.log('we found a match!');
                 state.ads.splice(index, 1, item);
-                editLocalStorage(item, editId);
+                editAds(item, editId);
                 state.adForm = false;
                 render();
             }
@@ -130,7 +130,7 @@ function deleteAd() {
         }
     }
     console.log(adId);
-    deleteLocalStorage(index, adId);
+    deleteAds(index, adId);
     render();
 }
 function checkEditMode() {
@@ -195,8 +195,8 @@ function addToState(listOfAds) {
     })
 }
 $(function () {
-    getLocalStorage().then(displayAds);
-    getLocalStorage().then(addToState);
+    getAds().then(displayAds);
+    getAds().then(addToState);
     displayAds(state.ads);
     render();
     watchHandlers();
