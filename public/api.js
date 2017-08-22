@@ -45,8 +45,7 @@ function createAd(item, callback) {
             "adCode": item.adCode
         })
     })
-    return Promise.resolve('success');
-
+    return Promise.resolve();
 }
 
 // function saveAds() {
@@ -68,6 +67,15 @@ function createAd(item, callback) {
 
 function getAds(callback) {
     const apiAds = fetch('/api/ads')
+        .then(res => {
+            return res.json();
+        })
+    // remove mock ads
+    // const adStorage = JSON.parse(localStorage.getItem('ads'));
+    return Promise.resolve(apiAds);
+}
+function getAdById(callback, id) {
+    const apiAds = fetch(`/api/ads/${id}`)
         .then(res => {
             return res.json();
         })

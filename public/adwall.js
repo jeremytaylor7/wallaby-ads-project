@@ -14,7 +14,7 @@ const state = {
     adForm: false,
     index: 0,
     editing: false,
-    codeValid: false
+    codeInvalid: false
 }
 
 function onEdit(title, state) {
@@ -87,13 +87,9 @@ function cancelAd() {
     render();
 }
 function postAd(item) {
-    state.ads.push({
-        "title": item.title,
-        "link": item.link,
-        "description": item.description
-    });
-    state.adForm = false;
     createAd(item);
+    state.ads.push(item);
+    state.adForm = false;
     render();
 
 }
@@ -114,8 +110,8 @@ function editAd(item, formCode) {
             }
             else {
                 console.log('invalid ad code!');
-                state.codeValid = true;
-                render();
+                state.codeInvalid = true;
+                displayError();
             }
         });
 
@@ -142,7 +138,9 @@ function checkEditMode() {
     }
 }
 function render() {
+
     $('.ad-form-container').empty();
+
     if (state.adForm === true) {
         renderAdForm($('.ad-form-container'), cancelAd, state.editing ? editAd : postAd, checkEditMode());
         $('.createAd').hide()
@@ -155,16 +153,17 @@ function render() {
     if (state.editing === true) {
         $('.adForm--code').val('');
         $('.adForm--code').attr("readonly", false);
-        if (state.codeValid === true) {
-            $('.code-validator').show();
-            state.codeValid = false;
-        }
 
     }
 
     displayAds(state.ads);
+
 }
 
+function displayError() {
+    $('.code-validator').show()
+    state.codeInvalid = false;
+}
 function watchHandlers() {
 
 }
