@@ -34,7 +34,7 @@ describe('API Test for Ad Endpoints', function () {
         "description": "this is the best course EVER!!",
         "adCode": 5555
     }
-    it('should make a successful post request', function () {
+    it.only('should make a successful post request', function () {
         return chai.request(app)
             .post('/api/ads')
             .send(testObj)
