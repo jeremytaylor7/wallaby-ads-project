@@ -34,14 +34,14 @@ describe('API Test for Ad Endpoints', function () {
         "description": "this is the best course EVER!!",
         "adCode": 5555
     }
-    it.only('should make a successful post request', function () {
+    it('should make a successful post request', function () {
         return chai.request(app)
             .post('/api/ads')
             .send(testObj)
             .then(function (res) {
                 console.log(res.body);
-                res.should.have.status(200);
-                res.should.be.json();
+                res.should.have.status(201);
+                res.should.be.json;
                 res.body.should.include.keys(
                     'title', 'link', 'description', 'adCode'
                 )
@@ -61,16 +61,17 @@ describe('API Test for Ad Endpoints', function () {
             .findOne()
             .exec()
             .then(post => {
-                console.log(post.id);
+                console.log(post._id);
                 return chai.request(app)
-                    .put('/api/ads/:id')
+                    .put(`/api/ads/${post._id}`)
                     .send(updateObj)
             })
             .then(res => {
+                console.log('CONSOLE LOG COMIN UP!' + res.body.title);
                 res.body.should.not.be.null;
-                res.should.have.status(204);
-                res.title.should.equal(updateObj.title);
-                res.link.should.equal(updateObj.link);
+                res.should.have.status(200);
+                res.body.title.should.equal(updateObj.title);
+                res.body.link.should.equal(updateObj.link);
             })
 
 

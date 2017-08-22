@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
             }
         }, function (err, post) {
             if (err) { console.error(err) }
-            res.status(200).json({ post });
+            res.status(200).json(post);
         });
 });
 
