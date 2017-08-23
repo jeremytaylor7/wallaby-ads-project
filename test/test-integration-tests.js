@@ -6,13 +6,14 @@ const chai = require('chai');
 const should = chai.should();
 chai.use(chaiHttp);
 const { app, runServer, closeServer } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 // integration tests for ad endpoints
 
 app.use(bodyParser.json());
 describe('API Test for Ad Endpoints', function () {
 
     before(function () {
-        return runServer();
+        return runServer(TEST_DATABASE_URL);
     });
 
     after(function () {
@@ -76,7 +77,7 @@ describe('API Test for Ad Endpoints', function () {
 
     it('should make a successful delete request', function () {
         let postObj;
-        Post
+        return Post
             .find()
             .exec()
             .then(post => {
