@@ -33,7 +33,7 @@ const MOCK_ADS = {
 
 
 function createAd(item, callback) {
-    fetch('/api/ads', {
+    const adRes = fetch('/api/ads', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,14 @@ function createAd(item, callback) {
             "adCode": item.adCode
         })
     })
-    return Promise.resolve();
+
+        .then(res => {
+            return res.json();
+        })
+        .then(results => {
+            return results;
+        })
+    return Promise.resolve(adRes);
 }
 
 // function saveAds() {

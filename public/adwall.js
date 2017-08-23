@@ -87,12 +87,20 @@ function cancelAd() {
     render();
 }
 function postAd(item) {
-    createAd(item);
-    state.ads.push(item);
-    state.adForm = false;
-    render();
-
+    //this is to edit the ad without refresh
+    //this promise takes response from api and adds to state.ads    
+    createAd(item)
+        .then(res => {
+            console.log(res);
+            return res;
+        })
+        .then(res => {
+            state.ads.push(res);
+            state.adForm = false;
+            render();
+        })
 }
+
 function editAd(item, formCode) {
     const index = state.index;
     const editId = state.ads[index]._id;

@@ -2,6 +2,7 @@
 (function () {
     const HTML = btnTitle => `
                 <form class="adForm--container" action="/api/ads" method="POST">
+                <div class="form-group">
                 <label>Title:</label>
                 <input type="text" class="adForm--title" name="title"></input>
                 <label>Website url:</label>
@@ -11,8 +12,9 @@
                 <label>Your Ad Pin</label>
                 <input class="adForm--code" name="adCode" value="5513" readonly="true"></input>
                 <p class="code-validator">Your ad code is invalid! Please try again!</p>
-                <button type="submit" class="adForm--submit">${btnTitle}</button>
-                <button class="adForm--cancel">Cancel</button>
+                <button type="submit" class="adForm--submit btn btn-success">${btnTitle}</button>
+                <button class="adForm--cancel btn btn-danger">Cancel</button>
+                </div>
             </form>`
 
     window.renderAdForm = function (element, cancelClickHandler, postHandler, btnTitle) {
