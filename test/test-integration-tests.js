@@ -18,14 +18,15 @@ app.use(bodyParser.json());
 describe('API Test for Ad Endpoints', function () {
 
     before(function () {
-        return runServer(TEST_DATABASE_URL, 8080);
+        return runServer(TEST_DATABASE_URL);
+    });
+
+    afterEach(function () {
+        return tearDownDb();
     });
 
     after(function () {
         return closeServer();
-    });
-    afterEach(function () {
-        return tearDownDb();
     });
 
     it('should make a successful get request', function () {
@@ -76,7 +77,7 @@ describe('API Test for Ad Endpoints', function () {
             .then(post => {
                 console.log(post._id);
                 return chai.request(app)
-                    .put(`localhost:8080/api/ads/${post._id}`)
+                    .put(`/api/ads/${post._id}`)
                     .send(updateObj)
             })
             .then(res => {
@@ -88,17 +89,14 @@ describe('API Test for Ad Endpoints', function () {
     })
 
     it('should make a successful delete request', function () {
-        let postObj;
         return Post
             .create(testObj)
             .then(post => {
-
                 return chai.request(app)
-                    .delete(`api/ads/${post._id}`);
+                    .delete(`/api/ads/${post._id}`);
             })
             .then(res => {
-                res.should.have.status(204);
-                return Post.createById(postObj.id);
+                res.should.have.status(200);
             })
             .then(post => {
                 should.not.exist(post);
