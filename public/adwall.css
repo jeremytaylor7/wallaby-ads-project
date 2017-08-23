@@ -27,6 +27,18 @@ body {
      color: red;
      font-size: 15px;;
  }
+.delete-success{
+    color: green;
+    font-size: 20px;
+    text-align: center;
+    display: none;
+}
+.post-success{
+    color: green;
+    font-size: 20px;
+    text-align: center;
+    display: none;
+}
  
 .ad-block-container {
     width: 100%;

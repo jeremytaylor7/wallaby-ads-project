@@ -96,7 +96,9 @@ function postAd(item) {
         .then(res => {
             state.ads.push(res);
             state.adForm = false;
+            state.success = 'success';
             render();
+            displaySuccess();
         })
 }
 
@@ -141,7 +143,10 @@ function deleteAd(formCode) {
                 }
                 console.log(deleteId);
                 deleteAds(index, deleteId);
+                state.adForm = false;
+                state.success = 'delete';
                 render();
+                displaySuccess();
 
             }
             else {
@@ -187,6 +192,21 @@ function render() {
 function displayError() {
     $('.code-validator').show()
     state.codeInvalid = false;
+
+}
+function hideSuccess() {
+    $('.delete-success').hide();
+    $('.post-success').hide();
+}
+function displaySuccess() {
+    if (state.success === 'delete') {
+        $('.delete-success').show();
+        setTimeout(hideSuccess, 5000);
+    }
+    else {
+        $('.post-success').show();
+        setTimeout(hideSuccess, 5000);
+    }
 }
 function watchHandlers() {
 
