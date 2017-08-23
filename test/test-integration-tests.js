@@ -19,13 +19,14 @@ describe('API Test for Ad Endpoints', function () {
         return closeServer();
     });
 
-    it('should make a successful get request', function () {
+    it('should make a successful get request', function (done) {
         return chai.request(app)
             .get('/api/ads')
             .then(function (res) {
                 console.log(res.body.length);
                 res.should.have.status(200);
                 res.body.should.have.length.of.at.least(1);
+                done();
             })
     })
     const testObj = {
@@ -34,7 +35,7 @@ describe('API Test for Ad Endpoints', function () {
         "description": "this is the best course EVER!!",
         "adCode": 5555
     }
-    it('should make a successful post request', function () {
+    it('should make a successful post request', function (done) {
         return chai.request(app)
             .post('/api/ads')
             .send(testObj)
@@ -49,6 +50,7 @@ describe('API Test for Ad Endpoints', function () {
                 res.body.link.should.not.be.null;
                 res.body.description.should.not.be.null;
                 res.body.adCode.should.not.be.null;
+                done();
             })
     })
     const updateObj = {
@@ -56,7 +58,7 @@ describe('API Test for Ad Endpoints', function () {
         "link": "supercourse.com"
     }
 
-    it('should make a successful put request', function () {
+    it('should make a successful put request', function (done) {
         return Post
             .findOne()
             .exec()
@@ -70,6 +72,7 @@ describe('API Test for Ad Endpoints', function () {
                 console.log('CONSOLE LOG COMIN UP!' + res.body.title);
                 res.body.should.not.be.null;
                 res.should.have.status(200);
+                done();
             })
 
 
