@@ -2,33 +2,46 @@ const chaiHttp = require('chai-http');
 const express = require('express')
 const { Post } = require('../models/postmodel');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const chai = require('chai');
 const should = chai.should();
 chai.use(chaiHttp);
 const { app, runServer, closeServer } = require('../server');
 const { TEST_DATABASE_URL } = require('../config');
-// integration tests for ad endpoints
 
+// integration tests for ad endpoints
+function tearDownDb() {
+    console.warn('Deleting database');
+    return mongoose.connection.dropDatabase();
+}
 app.use(bodyParser.json());
 describe('API Test for Ad Endpoints', function () {
 
     before(function () {
-        return runServer(TEST_DATABASE_URL);
+        return runServer(TEST_DATABASE_URL, 8080);
     });
 
     after(function () {
         return closeServer();
     });
+    afterEach(function () {
+        return tearDownDb();
+    });
 
     it('should make a successful get request', function () {
-        return chai.request(app)
-            .get('/api/ads')
-            .then(function (res) {
-                console.log(res.body.length);
-                res.should.have.status(200);
-                res.body.should.have.length.of.at.least(1);
+        return Post
+            .create(testObj)
+            .then(post => {
+                chai.request(app)
+                    .get('/api/ads')
+                    .then(function (res) {
+                        console.log(res.body.length);
+                        res.should.have.status(200);
+                        res.body.should.have.length.of.at.least(1);
+                    })
             })
     })
+
     const testObj = {
         "title": "The best online course!!",
         "link": "bestcourse.com!",
@@ -59,12 +72,11 @@ describe('API Test for Ad Endpoints', function () {
 
     it('should make a successful put request', function () {
         return Post
-            .find()
-            .exec()
+            .create(testObj)
             .then(post => {
-                console.log(post[7]._id);
+                console.log(post._id);
                 return chai.request(app)
-                    .put(`/api/ads/${post[7]._id}`)
+                    .put(`localhost:8080/api/ads/${post._id}`)
                     .send(updateObj)
             })
             .then(res => {
@@ -78,16 +90,15 @@ describe('API Test for Ad Endpoints', function () {
     it('should make a successful delete request', function () {
         let postObj;
         return Post
-            .find()
-            .exec()
+            .create(testObj)
             .then(post => {
 
                 return chai.request(app)
-                    .delete(`api/ads/${post[7]._id}`);
+                    .delete(`api/ads/${post._id}`);
             })
             .then(res => {
                 res.should.have.status(204);
-                return Post.findById(postObj.id);
+                return Post.createById(postObj.id);
             })
             .then(post => {
                 should.not.exist(post);
@@ -97,5 +108,3 @@ describe('API Test for Ad Endpoints', function () {
             })
     })
 })
-
-//tests

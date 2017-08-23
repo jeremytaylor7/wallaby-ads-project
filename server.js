@@ -36,7 +36,7 @@ mongoose.Promise = global.Promise;
 // }
 let server;
 
-function runServer(databaseUrl = DATABASE_URL, port = PORT) {
+function runServer(databaseUrl, port) {
 
     return new Promise((resolve, reject) => {
         mongoose.connect(databaseUrl, err => {
