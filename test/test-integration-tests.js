@@ -19,14 +19,13 @@ describe('API Test for Ad Endpoints', function () {
         return closeServer();
     });
 
-    it('should make a successful get request', function (done) {
+    it('should make a successful get request', function () {
         return chai.request(app)
             .get('/api/ads')
             .then(function (res) {
                 console.log(res.body.length);
                 res.should.have.status(200);
                 res.body.should.have.length.of.at.least(1);
-                done();
             })
     })
     const testObj = {
@@ -35,7 +34,7 @@ describe('API Test for Ad Endpoints', function () {
         "description": "this is the best course EVER!!",
         "adCode": 5555
     }
-    it('should make a successful post request', function (done) {
+    it('should make a successful post request', function () {
         return chai.request(app)
             .post('/api/ads')
             .send(testObj)
@@ -50,7 +49,6 @@ describe('API Test for Ad Endpoints', function () {
                 res.body.link.should.not.be.null;
                 res.body.description.should.not.be.null;
                 res.body.adCode.should.not.be.null;
-                done();
             })
     })
     const updateObj = {
@@ -58,21 +56,19 @@ describe('API Test for Ad Endpoints', function () {
         "link": "supercourse.com"
     }
 
-    it('should make a successful put request', function (done) {
+    it('should make a successful put request', function () {
         return Post
-            .findOne()
+            .find()
             .exec()
             .then(post => {
-                console.log(post._id);
+                console.log(post[7]._id);
                 return chai.request(app)
-                    .put(`/api/ads/${post._id}`)
+                    .put(`/api/ads/${post[7]._id}`)
                     .send(updateObj)
             })
             .then(res => {
-                console.log('CONSOLE LOG COMIN UP!' + res.body.title);
                 res.body.should.not.be.null;
                 res.should.have.status(200);
-                done();
             })
 
 
@@ -81,12 +77,12 @@ describe('API Test for Ad Endpoints', function () {
     it('should make a successful delete request', function () {
         let postObj;
         Post
-            .findOne()
+            .find()
             .exec()
             .then(post => {
-                postObj = post;
+
                 return chai.request(app)
-                    .delete(`api/ads/:${postId}`);
+                    .delete(`api/ads/${post[7]._id}`);
             })
             .then(res => {
                 res.should.have.status(204);
@@ -95,6 +91,10 @@ describe('API Test for Ad Endpoints', function () {
             .then(post => {
                 should.not.exist(post);
             })
+            .catch(err => {
+                console.log(err);
+            })
     })
 })
 
+//tests
