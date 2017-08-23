@@ -7,3 +7,5 @@ deploy:
   app: sheltered-bastion-34291
   on:
     repo: jeremytaylor7/wallaby-ads-project
+services:
+- mongodb
