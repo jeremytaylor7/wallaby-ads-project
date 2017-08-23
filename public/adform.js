@@ -13,11 +13,12 @@
                 <input class="adForm--code" name="adCode" value="5513" readonly="true"></input>
                 <p class="code-validator">Your ad code is invalid! Please try again!</p>
                 <button type="submit" class="adForm--submit btn btn-success">${btnTitle}</button>
+                <button type="button" class="btn btn-danger delete-btn btn-sm">Delete</button>
                 <button class="adForm--cancel btn btn-danger">Cancel</button>
                 </div>
             </form>`
 
-    window.renderAdForm = function (element, cancelClickHandler, postHandler, btnTitle) {
+    window.renderAdForm = function (element, deleteHandler, cancelClickHandler, postHandler, btnTitle) {
 
         const component = element.html(HTML(btnTitle));
 
@@ -27,6 +28,12 @@
                 cancelClickHandler(e);
             });
 
+        component.find('.delete-btn').on('click',
+            (e) => {
+                e.preventDefault();
+                const formCode = $('.adForm--code').val();
+                deleteHandler(formCode);
+            });
 
 
         component.find('form').on('submit', (e) => {

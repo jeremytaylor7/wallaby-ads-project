@@ -47,7 +47,6 @@ const adsTemplate = (title, link, description) => {
     <hr>
     <a class="btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
     <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
-    <button type="button" class="btn btn-danger delete-btn btn-sm">Delete</button>
     </div>`
 };
 function displayAds(ads) {
@@ -57,10 +56,10 @@ function displayAds(ads) {
     const adString = list.join('');
     $('.ad-block-container').html(adString);
 
-    $('.delete-btn').on('click', e => {
-        deleteAdHandler();
-        deleteAd();
-    })
+    // $('.delete-btn').on('click', e => {
+    //     deleteAdHandler();
+    //     deleteAd();
+    // })
     $('.edit-button').on('click', e => {
 
         editHandler(e);
@@ -124,19 +123,36 @@ function editAd(item, formCode) {
         });
 
 }
-function deleteAd() {
+function deleteAd(formCode) {
     const index = state.index;
-    let adId = state.ads[index]._id
-    for (let i = 0; i <= index; i++) {
-        if (index === i) {
-            state.ads.splice(index, 1);
-            console.log('item deleted');
-        }
-    }
-    console.log(adId);
-    deleteAds(index, adId);
-    render();
+    const deleteId = state.ads[index]._id;
+    checkadCode(deleteId)
+        .then(code => {
+            console.log(code);
+            console.log(code.adCode + 'the code!');
+            console.log('user entered' + formCode);
+            if (code.adCode === formCode) {
+                console.log('we found a match!');
+                for (let i = 0; i <= index; i++) {
+                    if (index === i) {
+                        state.ads.splice(index, 1);
+                        console.log('item deleted');
+                    }
+                }
+                console.log(deleteId);
+                deleteAds(index, deleteId);
+                render();
+
+            }
+            else {
+                console.log('invalid ad code!');
+                state.codeInvalid = true;
+                displayError();
+            }
+        });
+
 }
+
 function checkEditMode() {
     if (state.editing === true) {
         return 'Save Changes';
@@ -150,7 +166,7 @@ function render() {
     $('.ad-form-container').empty();
 
     if (state.adForm === true) {
-        renderAdForm($('.ad-form-container'), cancelAd, state.editing ? editAd : postAd, checkEditMode());
+        renderAdForm($('.ad-form-container'), deleteAd, cancelAd, state.editing ? editAd : postAd, checkEditMode());
         $('.createAd').hide()
         $('.adForm--code').val(randomCode);
     }
