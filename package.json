@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "mocha-watcher": "mocha --watch",
-    "start": "nodemon server"
+    "mocha-watcher": "mocha --watch"
+    //removed a script here!
   },
   "author": "",
   "license": "ISC",
