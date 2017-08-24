@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "mocha-watcher": "mocha --watch"
-    //removed a script here!
+    "mocha-watcher": "mocha --watch",
+    "thesuperlegittestintheworlie": "mocha"
   },
   "author": "",
   "license": "ISC",
