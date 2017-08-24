@@ -65,7 +65,10 @@ input {
 } 
 
  button {
-    
     width: 200px;
     height: 50px;
+}
+.intro-btn{
+    margin-left: auto;
+    margin-right: auto;
 }

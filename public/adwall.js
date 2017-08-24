@@ -40,7 +40,7 @@ don't store whole state, just whatever I need
 
 const adsTemplate = (title, link, description) => {
 
-    return `<div class="adsblock col-sm-3">
+    return `<div class="adsblock container col-sm-3 mr-10">
     <p class="title"><u>${title}</u></p>
     <hr>
     <p class="description">${description}</p>

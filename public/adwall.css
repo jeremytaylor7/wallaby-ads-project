@@ -12,15 +12,12 @@ body {
     
 }
 .adsblock {
-    background-color: #6BE1FF;  
-    padding-bottom: 5px;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-right: 10px;
-    border: 1px solid black;
+    background-color: #7884FF;
+     border: 1px solid black; 
     text-align: center; 
-    margin-top: 10px;
     font-family: 'PT Sans Narrow';
+    display: inline-block;
+    
 } 
  .code-validator {
      display: none;
@@ -40,11 +37,6 @@ body {
     display: none;
 }
  
-.ad-block-container {
-    width: 100%;
-    height: 100%;
-}  
-
 h1 {
     text-align: center;
     color: white;
@@ -67,14 +59,15 @@ h1 {
 .navbar {
     background-color: #7884FF;
     border: 1px solid black;
-    margin-bottom: 10px;
-
 }
 
 .intro-container {
-
+    padding-top: 10px;
+    color: white;
     background-color: #7884FF;
-    height: 50px;
+    height: 75px;
     width: 100%;
+    
 }
+/*yay
 
