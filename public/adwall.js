@@ -41,12 +41,18 @@ don't store whole state, just whatever I need
 const adsTemplate = (title, link, description) => {
 
     return `<div class="adsblock col-sm-3 mr-10">
+    <div class="title-container">
     <p class="title"><u>${title}</u></p>
+    </div>
     <hr>
+    <div class="description-container">
     <p class="description">${description}</p>
+    </div>
     <hr>
+    <div class"btn-container">
     <a class="btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
     <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
+    </div>
     </div>`
 };
 function groupIntoRows(template, index) {
@@ -81,9 +87,9 @@ function displayAds(ads) {
 
 function editHandler(e) {
     state.editing = true;
-    const title = $(event.target).parent().find('.title').text();
+    const title = $(event.target).closest('.adsblock').find('.title').text();
     const link = $(event.target).parent().find('.link').attr('href');
-    const description = $(event.target).parent().find('.description').text();
+    const description = $(event.target).closest('.adsblock').find('.description').text();
     onEdit(title, state);
     render();
     $('.adForm--title').val(title);
@@ -224,9 +230,9 @@ function watchHandlers() {
 
 }
 function deleteAdHandler() {
-    const title = $(event.target).parent().find('.title').text();
+    const title = $(event.target).closest('.adsblock').find('.title').text();
     const link = $(event.target).parent().find('.link').attr('href');
-    const description = $(event.target).parent().find('.description').text();
+    const description = $(event.target).closest('.adsblock').find('.description').text();
 
     const adItem = {
         "title": title,

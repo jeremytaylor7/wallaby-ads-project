@@ -5,11 +5,15 @@ body {
 
 }
 .title {
-    font-size: 30px;
+    font-size: 20px;
 }
 .login {
     float: right;
     
+}
+
+.description {
+    text-overflow: ellipsis;
 }
 .adsblock {
     background-color: #7884FF;
@@ -17,8 +21,20 @@ body {
     text-align: center; 
     font-family: 'PT Sans Narrow';
     display: inline-block;
-    
+    height: 250px;
 } 
+.btn-container {
+    height: 50px;
+    margin-top: 10px;
+}
+.description-container{
+    height: 75px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.description-container > p {
+    text-overflow: ellipsis;
+}
  .code-validator {
      display: none;
      color: red;
