@@ -12,9 +12,11 @@ body {
 }
 
 p {
+    color: white;
+    font-family: 'PT Sans Narrow';
     font-size: 30px;
-
-        background-color: #7884FF;
+    background-color: #7884FF;
+        
 
 }
 .login {
@@ -46,6 +48,7 @@ p, h1, h2 {
     text-align: center;
     font-family: 'PT Sans Narrow';
     color: white;
+    width: 100%;
  }
 
 .form-container {
@@ -71,4 +74,7 @@ input {
 .intro-btn{
     margin-left: auto;
     margin-right: auto;
+}
+.register, .intro, .about {
+    width: 100%;
 }

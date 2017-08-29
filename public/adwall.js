@@ -40,7 +40,7 @@ don't store whole state, just whatever I need
 
 const adsTemplate = (title, link, description) => {
 
-    return `<div class="adsblock container col-sm-3 mr-10">
+    return `<div class="adsblock col-sm-3 mr-10">
     <p class="title"><u>${title}</u></p>
     <hr>
     <p class="description">${description}</p>
@@ -49,9 +49,21 @@ const adsTemplate = (title, link, description) => {
     <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
     </div>`
 };
+function groupIntoRows(template, index) {
+    if (index === 0) {
+        return "<div class='row'>" + template;
+    }
+    else if (index % 4 === 0) {
+        return "</div><div class='row'>" + template;
+    }
+    return template;
+}
+
 function displayAds(ads) {
-    const list = ads.map((item) => {
-        return adsTemplate(item.title, item.link, item.description);
+    const list = ads.map((item, index) => {
+        const template = adsTemplate(item.title, item.link, item.description)
+        return groupIntoRows(template, index);
+
     })
     const adString = list.join('');
     $('.ad-block-container').html(adString);
