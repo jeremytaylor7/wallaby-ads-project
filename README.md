@@ -14,10 +14,16 @@ gain exposure for their businesses.
 
 ## Screenshots:
 http://imgur.com/yLemEcd
+
 http://imgur.com/yLemEcd
 
 ## Technologies used:
-HTML, CSS, Javascript, Jquery, Bootstrap 4, Express js, Node js, MongoDB, Mongoose
+HTML, CSS, Javascript, Jquery, Bootstrap 4, Express js, Node js, MongoDB, Mongoose, RESTful API
+
+##RESTful API Docs:
+
+Base URL: https://sheltered-bastion-34291.herokuapp.com/api
+
 
 
 ## User Stories
