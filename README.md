@@ -8,12 +8,16 @@
 
 ## Function: 
 Ad posting platform designed exclusively for business owners
-online and offline. This allows business owners to post classified ads
-in various IM niches and offline niches. 
+online and offline. This allows business owners to post various
+descriptive ads linking to their site to simply and effectively
+gain exposure for their businesses.
 
-Ad posting is free and is limited to one ad a day. Ads will all show
-in a block style fashion where each ad is adjacent to one another.
-Ads will allow users to include a title link picture and description.
+## Screenshots:
+http://imgur.com/yLemEcd
+http://imgur.com/yLemEcd
+
+## Technologies used:
+HTML, CSS, Javascript, Jquery, Bootstrap 4, Express js, Node js, MongoDB, Mongoose
 
 
 ## User Stories
