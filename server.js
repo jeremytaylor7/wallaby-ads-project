@@ -11,7 +11,6 @@ const { PORT, DATABASE_URL } = require('./config');
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-// app.listen(process.env.PORT || port, listening);
 
 app.use('/adwall', adwallRouter);
 app.use('/api/ads', adsRouter);
@@ -20,20 +19,7 @@ app.use('/api/ads', adsRouter);
 app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 
-// function listening() {
-//     if (!isProduction) {
-//         console.log('listening on port' + port);
-//         // https://ponyfoo.com/articles/a-browsersync-primer#inside-a-node-application
-//         browserSync({
-//             files: ['src/**/*.{html,js,css}'],
-//             online: false,
-//             open: false,
-//             port: port + 1,
-//             proxy: 'localhost:' + port,
-//             ui: false
-//         });
-//     }
-// }
+
 let server;
 
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {

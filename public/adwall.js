@@ -74,10 +74,7 @@ function displayAds(ads) {
     const adString = list.join('');
     $('.ad-block-container').html(adString);
 
-    // $('.delete-btn').on('click', e => {
-    //     deleteAdHandler();
-    //     deleteAd();
-    // })
+
     $('.edit-button').on('click', e => {
 
         editHandler(e);

@@ -21,17 +21,6 @@ const MOCK_ADS = {
 
     ]
 }
-
-//google how to use local storage
-
-// call load inside get ads function 
-// need save function to interact with local storage
-//
-// when post is clicked call createAd function which
-// adds to mockdata and then saves
-//goal is to finish client and design by next session!
-
-
 function createAd(item, callback) {
     const adRes = fetch('/api/ads', {
         method: 'POST',
@@ -54,31 +43,11 @@ function createAd(item, callback) {
         })
     return Promise.resolve(adRes);
 }
-
-// function saveAds() {
-//     fetch('/api/ads', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             "title": "Hubot",
-//             "link": "hubot",
-//             "description": "hey",
-//         })
-//     })
-//     localStorage.setItem('ads', JSON.stringify(MOCK_ADS.fakeAds));
-//     return Promise.resolve('success');
-
-// }
-
 function getAds(callback) {
     const apiAds = fetch('/api/ads')
         .then(res => {
             return res.json();
         })
-    // remove mock ads
-    // const adStorage = JSON.parse(localStorage.getItem('ads'));
     return Promise.resolve(apiAds);
 }
 function getAdById(callback, id) {
@@ -86,8 +55,6 @@ function getAdById(callback, id) {
         .then(res => {
             return res.json();
         })
-    // remove mock ads
-    // const adStorage = JSON.parse(localStorage.getItem('ads'));
     return Promise.resolve(apiAds);
 }
 function checkadCode(id) {
@@ -124,26 +91,7 @@ function deleteAds(index, id) {
             console.log(res);
         })
 }
-
-// function getAds(callback) {
-//     callback(ads);
-//     return getAds();
-// }/
-
 function getAndDisplayAds(callback) {
     getAds(displayAds);
     return Promise.resolve('promise');
 }
-
-
-
-
-//add delete and update to this api
-//use api to get local storage add to state and render
-// all of my functions need to return promises in api
-// Promise.resolve documentation static promises
-
-
-//homework
-//write test for endpoints
-//if any logic beyond .find and json put in separate javascript file to unit test the file
