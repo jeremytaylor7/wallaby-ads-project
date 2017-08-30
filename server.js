@@ -1,11 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const browserSync = require('browser-sync');
 const app = express();
 const adsRouter = require('./api_routes/ads');
 const adwallRouter = require('./routes/adwall');
 const bodyParser = require('body-parser');
-const port = 9777;
 const isProduction = 'production' === process.env.NODE_ENV;
 const { PORT, DATABASE_URL } = require('./config');
 app.use(bodyParser.json());
