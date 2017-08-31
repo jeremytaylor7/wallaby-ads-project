@@ -1,7 +1,7 @@
 
-var db = {
-    posts: []
-}
+const db = {
+  posts: [],
+};
 function createPost(postData) {
-    db.posts.push(postData);
+  db.posts.push(postData);
 }

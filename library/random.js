@@ -1,6 +1,6 @@
 function random() {
-    let int = Math.random() * 10000;
-    return Math.floor(int);
+  const int = Math.random() * 10000;
+  return Math.floor(int);
 }
 
 random();
