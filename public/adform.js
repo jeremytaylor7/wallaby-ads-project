@@ -5,13 +5,13 @@
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Title:</label>
                 <div class="col-md-8">
-                 required  type="text" class="form-control adForm--title" name="title"></input>
+                <input required  type="text" class="form-control adForm--title" name="title"></input>
                 </div>
                 </div>
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Website:</label>
                 <div class="col-md-8">
-                 required  type="text" class="form-control adForm--url" name="link"></input>
+                <input required  type="text" class="form-control adForm--url" name="link"></input>
                 </div>
                 </div>
                 <div class="form-group row">
@@ -23,7 +23,7 @@
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Your Ad Pin:</label>
                 <div class="col-md-8">
-                 required type="text" class="form-control adForm--code" name="adCode" value="5513" readonly="true"></input>
+                <input required type="text" class="form-control adForm--code" name="adCode" value="5513" readonly="true"></input>
                 </div>
                 </div>
                 <p class="code-validator">Your ad code is invalid! Please try again!</p>
