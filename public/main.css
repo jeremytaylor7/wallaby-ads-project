@@ -23,12 +23,12 @@ p {
     float: right;
 }
 
-h1 {
+.intro-text {
     font-size: 50px;
+    font-family: 'PT Sans Narrow';
     background-color: #7884FF;
     margin-bottom: 0;
     margin-top: 10px;
-    height: 50px;
 
 }
 .about {

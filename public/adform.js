@@ -3,26 +3,26 @@
   const HTML = btnTitle => `
                 <form class="adForm--container" action="/api/ads" method="POST">
                 <div class="form-group row">
-                <label class="col-2 col-form-label">Title:</label>
-                <div class="col-10">
+                <label class="col-md-2 col-form-label">Title:</label>
+                <div class="col-md-8">
                 <input type="text" class="form-control adForm--title" name="title"></input>
                 </div>
                 </div>
                 <div class="form-group row">
-                <label class="col-2 col-form-label">Website:</label>
-                <div class="col-10">
+                <label class="col-md-2 col-form-label">Website:</label>
+                <div class="col-md-8">
                 <input type="text" class="form-control adForm--url" name="link"></input>
                 </div>
                 </div>
                 <div class="form-group row">
-                <label class="col-2 col-form-label">Description:</label>
-                <div class="col-10">
+                <label class="col-md-2 col-form-label">Description:</label>
+                <div class="col-md-8">
                 <textarea type="text" class="form-control adForm--description" name="description"></textarea>
                 </div>
                 </div>
                 <div class="form-group row">
-                <label class="col-2 col-form-label">Your Ad Pin:</label>
-                <div class="col-10">
+                <label class="col-md-2 col-form-label">Your Ad Pin:</label>
+                <div class="col-md-8">
                 <input type="text" class="form-control adForm--code" name="adCode" value="5513" readonly="true"></input>
                 </div>
                 </div>
