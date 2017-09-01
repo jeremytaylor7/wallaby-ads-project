@@ -48,8 +48,8 @@ const adsTemplate = (title, link, description) => `<div class="adsblock col-sm-3
     </div>
     <hr>
     <div class"btn-container">
-    <a class="btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
-    <button type="button" class="btn btn-success edit-button btn-sm">Edit</button>
+    <a class="col-sm-12 btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
+    <button type="button" class="col-sm-12 btn btn-success edit-button btn-sm">Edit</button>
     </div>
     </div>`;
 function groupIntoRows(template, index) {
