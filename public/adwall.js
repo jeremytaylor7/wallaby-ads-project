@@ -71,6 +71,7 @@ function displayAds(ads) {
 
 
   $('.edit-button').on('click', (e) => {
+    window.scrollTo(0, 0);
     editHandler(e);
   });
 }
