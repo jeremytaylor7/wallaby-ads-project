@@ -5,25 +5,25 @@
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Title:</label>
                 <div class="col-md-8">
-                <input type="text" class="form-control adForm--title" name="title"></input>
+                 required  type="text" class="form-control adForm--title" name="title"></input>
                 </div>
                 </div>
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Website:</label>
                 <div class="col-md-8">
-                <input type="text" class="form-control adForm--url" name="link"></input>
+                 required  type="text" class="form-control adForm--url" name="link"></input>
                 </div>
                 </div>
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Description:</label>
                 <div class="col-md-8">
-                <textarea type="text" class="form-control adForm--description" name="description"></textarea>
+                <textarea  type="text" class="form-control adForm--description" name="description"></textarea>
                 </div>
                 </div>
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Your Ad Pin:</label>
                 <div class="col-md-8">
-                <input type="text" class="form-control adForm--code" name="adCode" value="5513" readonly="true"></input>
+                 required type="text" class="form-control adForm--code" name="adCode" value="5513" readonly="true"></input>
                 </div>
                 </div>
                 <p class="code-validator">Your ad code is invalid! Please try again!</p>
