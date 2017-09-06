@@ -18,7 +18,7 @@
                 <label class="col-md-2 col-form-label">Description:</label>
                 <div class="col-md-8">
                 <textarea  type="text" class="form-control adForm--description" name="description"></textarea>
-                </div>
+                </div> 
                 </div>
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Your Ad Pin:</label>
