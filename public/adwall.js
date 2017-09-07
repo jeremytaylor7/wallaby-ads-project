@@ -38,7 +38,18 @@ don't store whole state, just whatever I need
 */
 
 
-const adsTemplate = (title, link, description) => `<div class="adsblock col-sm-3 mr-10">
+const adsTemplate = (title, link, description) => {
+  const linkString = link, substring = "http";
+  let linkVar;
+
+  if (linkString.indexOf(substring) === -1) {
+    linkVar = `http://${link}`;
+  }
+  else {
+    linkVar = link;
+  }
+
+  return `<div class="adsblock col-sm-3 mr-10">
     <div class="title-container">
     <p class="title"><u>${title}</u></p>
     </div>
@@ -48,10 +59,11 @@ const adsTemplate = (title, link, description) => `<div class="adsblock col-sm-3
     </div>
     <hr>
     <div class"btn-container">
-    <a class="col-sm-12 btn btn-sm btn-primary link" href="${link}" role="button">Website</a>
+    <a class="col-sm-12 btn btn-sm btn-primary link" href="${linkVar}" role="button">Website</a>
     <button type="button" class="col-sm-12 btn btn-success edit-button btn-sm">Edit</button>
     </div>
-    </div>`;
+    </div>`
+};
 function groupIntoRows(template, index) {
   if (index === 0) {
     return `<div class='row'>${template}`;

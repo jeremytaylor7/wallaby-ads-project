@@ -76,6 +76,7 @@ h1 {
 .navbar {
     background-color: #7884FF;
     border: 1px solid black;
+    box-shadow: 2px 2px black;
 }
 
 .intro-container {
@@ -84,6 +85,7 @@ h1 {
     background-color: #7884FF;
     width: 100%;
     font-family: 'PT Sans Narrow';
+    box-shadow: 2px 2px black;
 
     
 }

@@ -7,7 +7,6 @@ body {
 .navbar {
     background-color: #7884FF;
     border: 1px solid black;
-    margin-bottom: 10px;
 
 }
 
@@ -28,7 +27,6 @@ p {
     font-family: 'PT Sans Narrow';
     background-color: #7884FF;
     margin-bottom: 0;
-    margin-top: 10px;
 
 }
 .about {
@@ -43,6 +41,7 @@ p {
     background-image: url("marketing.png");
     display: block;
     margin-top: 0;
+    box-shadow: 2px 2px black;
 }
 p, h1, h2 {
     text-align: center;

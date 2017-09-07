@@ -11,7 +11,7 @@
                 <div class="form-group row">
                 <label class="col-md-2 col-form-label">Website:</label>
                 <div class="col-md-8">
-                <input required  type="text" class="form-control adForm--url" name="link"></input>
+                <input required  type="url" class="form-control adForm--url" name="link"></input>
                 </div>
                 </div>
                 <div class="form-group row">
