@@ -2,11 +2,11 @@
   "name": "thinkful_capstone_2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha",
     "mocha-watcher": "mocha --watch",
-    "thesuperlegittestintheworlie": "mocha"
+    "dev": "nodemon"
   },
   "author": "",
   "license": "ISC",
